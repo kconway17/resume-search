@@ -13,15 +13,15 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 
-//The REST routes for "todos".
-app.route('/todos')
-  .get(listTodoItems)
-  .post(createTodoItem);
+//The REST routes for "resumes".
+app.route('/resumes')
+  .get(listAllResumes)
+  .post(createResume);
 
-app.route('/todos/:id')
-  .get(getTodoItem)
-  .put(updateTodoItem)
-  .delete(deleteTodoItem);
+app.route('/resumes/:id')
+  .get(getResumeItem)
+  .put(updateResumeItem)
+  .delete(deleteResumeItem);
 
 //If we reach this middleware the route could not be handled and must be unknown.
 app.use(handle404);
@@ -31,15 +31,15 @@ app.use(handleError);
 
 
 /*
- * Retrieve all todo items.
+ * Retrieve all resume items.
  */
-function listTodoItems(req, res, next) {
-  r.table('todos').orderBy({index: 'createdAt'}).run(req.app._rdbConn, function(err, cursor) {
+function listAllResumes(req, res, next) {
+  r.table('resumes').orderBy({index: 'createdAt'}).run(req.app._rdbConn, function(err, cursor) {
     if(err) {
       return next(err);
     }
 
-    //Retrieve all the todos in an array.
+    //Retrieve all the resumes in an array.
     cursor.toArray(function(err, result) {
       if(err) {
         return next(err);
@@ -51,15 +51,15 @@ function listTodoItems(req, res, next) {
 }
 
 /*
- * Insert a new todo item.
+ * Insert a new resume item.
  */
-function createTodoItem(req, res, next) {
-  var todoItem = req.body;
-  todoItem.createdAt = r.now();
+function createResume(req, res, next) {
+  var resumeItem = req.body;
+  resumeItem.createdAt = r.now();
 
-  console.dir(todoItem);
+  console.dir(resumeItem);
 
-  r.table('todos').insert(todoItem, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
+  r.table('resumes').insert(resumeItem, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
     if(err) {
       return next(err);
     }
@@ -69,12 +69,12 @@ function createTodoItem(req, res, next) {
 }
 
 /*
- * Get a specific todo item.
+ * Get a specific resume item.
  */
-function getTodoItem(req, res, next) {
-  var todoItemID = req.params.id;
+function getResumeItem(req, res, next) {
+  var resumeItemID = req.params.id;
 
-  r.table('todos').get(todoItemID).run(req.app._rdbConn, function(err, result) {
+  r.table('resumes').get(reusmeItemID).run(req.app._rdbConn, function(err, result) {
     if(err) {
       return next(err);
     }
@@ -84,13 +84,13 @@ function getTodoItem(req, res, next) {
 }
 
 /*
- * Update a todo item.
+ * Update a resume item.
  */
-function updateTodoItem(req, res, next) {
-  var todoItem = req.body;
-  var todoItemID = req.params.id;
+function updateResumeItem(req, res, next) {
+  var resumeItem = req.body;
+  var resumeItemID = req.params.id;
 
-  r.table('todos').get(todoItemID).update(todoItem, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
+  r.table('resumes').get(resumeItemID).update(resumeItem, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
     if(err) {
       return next(err);
     }
@@ -100,12 +100,12 @@ function updateTodoItem(req, res, next) {
 }
 
 /*
- * Delete a todo item.
+ * Delete a resume item.
  */
-function deleteTodoItem(req, res, next) {
-  var todoItemID = req.params.id;
+function deleteResumeItem(req, res, next) {
+  var resumeItemID = req.params.id;
 
-  r.table('todos').get(todoItemID).delete().run(req.app._rdbConn, function(err, result) {
+  r.table('resumes').get(resumeItemID).delete().run(req.app._rdbConn, function(err, result) {
     if(err) {
       return next(err);
     }
@@ -161,11 +161,11 @@ async.waterfall([
   },
   function createTable(connection, callback) {
     //Create the table if needed.
-    r.tableList().contains('todos').do(function(containsTable) {
+    r.tableList().contains('resumes').do(function(containsTable) {
       return r.branch(
         containsTable,
         {created: 0},
-        r.tableCreate('todos')
+        r.tableCreate('resumes')
       );
     }).run(connection, function(err) {
       callback(err, connection);
@@ -173,11 +173,11 @@ async.waterfall([
   },
   function createIndex(connection, callback) {
     //Create the index if needed.
-    r.table('todos').indexList().contains('createdAt').do(function(hasIndex) {
+    r.table('resumes').indexList().contains('createdAt').do(function(hasIndex) {
       return r.branch(
         hasIndex,
         {created: 0},
-        r.table('todos').indexCreate('createdAt')
+        r.table('resumes').indexCreate('createdAt')
       );
     }).run(connection, function(err) {
       callback(err, connection);
@@ -185,7 +185,7 @@ async.waterfall([
   },
   function waitForIndex(connection, callback) {
     //Wait for the index to be ready.
-    r.table('todos').indexWait('createdAt').run(connection, function(err, result) {
+    r.table('resumes').indexWait('createdAt').run(connection, function(err, result) {
       callback(err, connection);
     });
   }
