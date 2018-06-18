@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var r = require('rethinkdb');
 
-var config = require(__dirname + '/config.js');
+var config = require(__dirname + './config.js');
 
 var app = express();
 
@@ -18,7 +18,7 @@ app.route('/resumes')
   .get(listAllResumes)
   .post(createResume);
 
-app.route('/resumes/:id')
+app.route('/resumes/:id')node
   .get(getResumeItem)
   .put(updateResumeItem)
   .delete(deleteResumeItem);
