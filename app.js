@@ -3,9 +3,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var r = require('rethinkdb');
 
-var config = require(__dirname + './config.js');
-
+var config = require('config');
 var app = express();
+
+var submit 
 
 
 //For serving the index.html and all the other front-end assets.
@@ -28,7 +29,6 @@ app.use(handle404);
 
 //Generic error handling middleware.
 app.use(handleError);
-
 
 /*
  * Retrieve all resume items.
@@ -195,6 +195,8 @@ async.waterfall([
     process.exit(1);
     return;
   }
+  
+  
 
   startExpress(connection);
 });
