@@ -11,19 +11,19 @@
    
   
 <body onload="populateFormElements()">
-<form ng-submit = "sendResume()">
-
+<form method="POST" action="/resume">
+<img src = "pcilogo.png" alt = "PCI Logo">
 <!-- Creates table in the same format as one-page PCI resumes -->
 <table>
 <tr bgcolor = "#cc0000">
-	<th colspan = "5", style = "color:white;">NAME: <input type="text" name="username"></th>
+	<th colspan = "5", style = "color:white;">NAME: <input type="text" id="username" name="username"/></th>
 </tr>
 
 <div class ="name section">
 <tr>
 <!-- Add Work Role section with drop down menu -->
 	<th>Work Role</th>
-	<td><select name = "Work Role">
+	<td><select name = "Work Role" id="work_role">
 	<option></option>
 	<option>System Engineer</option>
 	<option>Business Consultant</option>
@@ -39,7 +39,7 @@
     <table id="clearanceTable" style="height:50px>
       <tr>
 	    <td>
-          <input type="text" name="clearance_1_description"> 
+          <input type="text" name = "clearance"> 
           Month:  <select id="clearance_1_month" name="clearance_1_month"></select>
           Year:   <select id="clearance_1_year" name="clearance_1_year"></select>
 	    </td>
@@ -83,7 +83,7 @@
 <!-- Add Experience section with drop down menu (years in increments of 5)-->
 <tr>
 	<th>Experience</th>
-	<td><select name = "Years Experience">
+	<td><select name = "Experience">
 	<option></option>
 	<option>0-5 Years</option>
 	<option>6-10 Years</option>
@@ -119,12 +119,12 @@
 	<option>Degree</option>
 	<option>Associates Degree</option>
 	<option>Bachelor's Degree</option>
-	</select> in: <input type="text" name="username"></td>
+	</select> in: <input type="text" name="degree_field"></td>
 	<td colspan = "3"><select name = "Advanced Degree">
 	<option>Advanced Degree</option>
 	<option>Master's Degree</option>
 	<option>Doctoral Degree</option>
-	</select> in: <input type="text" name="username"></td>
+	</select> in: <input type="text" name="advanced_degree_field"></td>
 	
 </tr>
 <!-- Add Certification section with text field to enter training and drop down menu to enter dates-->
@@ -134,7 +134,7 @@
     <table id="certTable" style ="width:600px">
       <tr>
 	    <td>
-          <input type="text" name="cert_1_description"> 
+          <input type="text" name="Certification"> 
           Month:  <select id="cert_1_month" name="cert_1_month"></select>
           Year:   <select id="cert_1_year" name="cert_1_year"></select>
 	    </td>
@@ -151,7 +151,7 @@
     <table id="trainingTable" border="1" style = "width: 600px">
       <tr>
 	    <td>
-          <input type="text" name="training_1_description"> 
+          <input type="text" name="Training"> 
           Month:  <select id="training_1_month" name="training_1_month"></select>
           Year:   <select id="training_1_year" name="training_1_year"></select>
 	    </td>
@@ -186,7 +186,7 @@
   <th>Company/Role:</th>
   <td colspan = "3">
     <table id="workTable" style="width: 600px">
-      <tr><td><input type="text" name="work_1_description"> 
+      <tr><td><input type="text" name="Work History"> 
 		 FROM Month: <select id="work_1_from_month" name="work_1_from_month"></select>
           Year:   <select id="work_1_from_year" name="work_1_from_year"></select></td>
 	</tr>
@@ -211,7 +211,7 @@
 </tr>
 
 <tr>
-	<th colspan = "5"><textarea name="tools_experience"  rows = "4" cols = "60"></textarea></th>
+	<th colspan = "5"><textarea name="Tools Experience"  rows = "4" cols = "60"></textarea></th>
 </tr>
 	</div>
 	
