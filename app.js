@@ -30,13 +30,20 @@ app.get('/resume',
   }
 )
 
-app.post('/resume', function(req, res){
+ app.post('/resume', function(req, res){
 	console.log("POST /resume");
 	console.log( req.body );
+	
+	
+app.post('/search_resume', function(req, res){
+	console.log("POST /search_resume");
+	console.log( req.body );
+})
+
+
 		
   // Saving the new user to DB
   db.saveResume({
-	  //TODO:  add additional fields here from form
       user_name: req.body.username,
       work_role: req.body['Work Role'],
 	  clearance_1_month: req.body.clearance_1_month,
@@ -89,6 +96,8 @@ app.post('/resume', function(req, res){
     }
   );
 });
+
+
 
 
 server.listen(8000);

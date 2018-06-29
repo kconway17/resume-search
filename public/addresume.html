@@ -4,8 +4,14 @@
 <head>
     <title>Team Builder App </title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="styles.css">
+	
+	
+<ul class = "hmenu">
+  <li class = "hmenu"><a href = "searchpage2.html">Search Page</a></li>
+  <li class = "hmenu"><a href = "addResume.html">Input Page</a></li>
+ </ul>
 
 </head> 
    
@@ -13,6 +19,7 @@
 <body onload="populateFormElements()">
 <form method="POST" action="/resume">
 <img src = "pcilogo.png" alt = "PCI Logo">
+
 <!-- Creates table in the same format as one-page PCI resumes -->
 <table>
 <tr bgcolor = "#cc0000">
@@ -34,20 +41,27 @@
 
 <!-- Add Security Clearances section with text field to enter clearance and drop down menu to enter dates-->
 
-  <th rowspan = "2">Security Clearances</th>
+  <th rowspan = "2">Security Clearances (Highest Level)</th>
   <td rowspan = "2", colspan = "2">
-    <table id="clearanceTable" style="height:50px>
+    <table id="clearanceTable" style="height:50px">
       <tr>
-	    <td>
-          <input type="text" name = "clearance"> 
+	  <td><select name = "Work Role" id="work_role">
+	<option></option>
+	<option>None</option>
+	<option>Public Trust</option>
+	<option>Confidential</option>
+	<option>Secret</option>
+	<option>Top Secret</option>
+	<option>CI Poly</option>
+	<option>Full Scope Poly</option>
+	</select>
           Month:  <select id="clearance_1_month" name="clearance_1_month"></select>
           Year:   <select id="clearance_1_year" name="clearance_1_year"></select>
-	    </td>
+		   
       </tr>
     </table>
 
-  <!-- Adds button to add another clearance-->	
- <button type="button" onclick="addClearance()" >Add Another</button> </td>
+ 
 </tr>
 </div>
 
@@ -116,12 +130,14 @@
 <tr>
 	<th>Education</th>
 	<td><select name = "Degree">
-	<option>Degree</option>
+	<option>Undergrad Degree</option>
+	<option>None</option>
 	<option>Associates Degree</option>
 	<option>Bachelor's Degree</option>
 	</select> in: <input type="text" name="degree_field"></td>
 	<td colspan = "3"><select name = "Advanced Degree">
 	<option>Advanced Degree</option>
+	<option>None</option>
 	<option>Master's Degree</option>
 	<option>Doctoral Degree</option>
 	</select> in: <input type="text" name="advanced_degree_field"></td>
@@ -187,14 +203,8 @@
   <td colspan = "3">
     <table id="workTable" style="width: 600px">
       <tr><td><input type="text" name="Work History"> 
-		 FROM Month: <select id="work_1_from_month" name="work_1_from_month"></select>
-          Year:   <select id="work_1_from_year" name="work_1_from_year"></select></td>
-	</tr>
-	<tr>
-		<td>
-          <input type="text" name="work_1_description"> 
-          TO Month:  <select id="work_1_to_month" name="work_1_to_month"></select>
-          Year:   <select id="work_1_to_year" name="work_1_to_year"></select>
+		 from <select id="work_1_from_year" name="work_1_from_year"></select>
+          to <select id="work_1_to_year" name="work_1_to_year"></select>
 	    </td>
       </tr>
     </table>
@@ -228,9 +238,12 @@
 </table>
 
 <!-- Insert Submit and Reset buttons -->
-<input type= "submit" value = "Submit">
-<input type= "reset">
+<input type= "submit" value = "Submit" class = "button">
+<input type= "reset" class = "button">
 </form>
+
+
+
 
 <script>
 
@@ -242,8 +255,6 @@ function populateFormElements(){
     fillMonthSelect('cert_1_month')
     fillMonthSelect('clearance_1_month')
     fillMonthSelect('training_1_month')
-    fillMonthSelect('work_1_to_month')
-    fillMonthSelect('work_1_from_month')
     fillYearSelect('training_1_year')
 	fillYearSelect('cert_1_year')
 	fillYearSelect('clearance_1_year')
@@ -255,7 +266,7 @@ function fillMonthSelect( selectId ){
     //get the select element using the id passed in from the DOM
     var select = document.getElementById(selectId);
     //For 1-12 create option elements
-    for (var i=1; i< 13; i++){
+    for (var i=0; i< 13; i++){
       //option node
       var option = document.createElement("option");
       option.setAttribute("value", ""+i);
@@ -306,26 +317,6 @@ function addTraining(){
     fillYearSelect(idString+"_year");
 }	
 
-//Counter for number of clearance rows
-var clearance_count=1;
-
-//Called when click Add Another button for Security Clearances section
-function addClearance(){
-    clearance_count += 1  //increment count
-    var table = document.getElementById("clearanceTable");
-    var row   = table.insertRow();
-    var cell  = row.insertCell();
-    //constructs the prefix for the ids needed like 'clearance_2'
-    var idString = "clearance_"+clearance_count;
-    //builds html version of the inputs and selects needed for this row
-    var html= "<input type='text' name='"+idString+"_description'> "
-       +" Month:  <select id='"+idString+"_month' name='"+idString+"_month'></select>"
-       +" Year:   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
-    cell.innerHTML = html;
-    //populate the pull down menus select elements as needed
-    fillMonthSelect(idString+"_month");
-    fillYearSelect(idString+"_year");
-}
 
 //Counter for number of certification rows
 var cert_count=1;
@@ -361,12 +352,12 @@ function addWork(){
     var idString = "work_" + work_count;
     //builds html version of the inputs and selects needed for this row
     var html= "<input type='text' name='"+idString+"_description'> "
-       +" Month:  <select id='"+idString+"_month' name='"+idString+"_month'></select>"
-       +" Year:   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
+       +" from   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
+	   + " to   <select id='"+idString+"_year2' name='"+idString+"_year2'></select>"
     cell.innerHTML = html;
     //populate the pull down menus select elements as needed
-    fillMonthSelect(idString+"_month");
     fillYearSelect(idString+"_year");
+	fillYearSelect(idString+"_year2");
 }
 
 </script>
