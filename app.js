@@ -30,22 +30,17 @@ app.get('/resume',
   }
 )
 
+
  app.post('/resume', function(req, res){
 	console.log("POST /resume");
 	console.log( req.body );
+ 
 	
-	
-app.post('/search_resume', function(req, res){
-	console.log("POST /search_resume");
-	console.log( req.body );
-})
-
-
-		
   // Saving the new user to DB
   db.saveResume({
       user_name: req.body.username,
       work_role: req.body['Work Role'],
+	  clearance: req.body.clearance,
 	  clearance_1_month: req.body.clearance_1_month,
 	  clearance_1_year: req.body.clearance_1_year,
 	  company: req.body.Company,
@@ -62,14 +57,11 @@ app.post('/search_resume', function(req, res){
 	  training_1_month: req.body.training_1_month,
 	  training_1_year: req.body.training_1_year,
 	  executive_summary: req.body.executive_summary,
-	  work_history: req.body['Work History'],
-	  work_1_from_month: req.body.work_1_from_month,
 	  work_1_from_year: req.body.work_1_from_year,
 	  work_1_description: req.body.work_1_description,
-	  work_1_to_month: req.body.work_1_to_month,
 	  work_1_to_year: req.body.work_1_to_year,
-	tools_experience: req.body['Tools Experience'],
-	keywords: req.body.keywords
+	  tools_experience: req.body['Tools Experience'],
+	  keywords: req.body.keywords
     },
     function(err, saved) {
       console.log("[DEBUG][/resume][saveResume] %s", saved);
@@ -98,6 +90,52 @@ app.post('/search_resume', function(req, res){
 });
 
 
+app.post('/search_resume', function(req, res){
+	console.log("POST /search_resume");
+	console.log( req.body );
+	
+
+	
+//call function db.search
+db.search({
+    work_role: req.body.work_role,
+    clearance: req.body.clearance,
+    tools_experience: req.body.tools_experience,
+},
+
+/*var searchCriteria {}
+if(req.body.work_role != ""){
+	searchCriteria[work_role] = req.body.work_role;
+}
+if(req.body.clearance != ""){
+	searchCriteria[clearance] = req.body.clearance;
+}
+if(req.body.tools_experience != ""){
+	searchCriteria[tools_experience] = req.body.tools_experience;
+}
+},*/
+
+ 
+function(err, cursor) {
+    if(err) {
+      return next(err);
+    }
+
+    //Retrieve all the resumes in an array.
+    cursor.toArray(function(err, result) {
+      console.log("[DEBUG][/search][cursor.toArray] err:     " + err);
+      console.log("[DEBUG][/search][cursor.toArray] result: " + result);
+      if(err) {
+        res.write('<h1>FAILURE</h1> <p>Search Returned Error</p>');
+        res.write('Error:  ' + err.name + ' with message: ' + err.message);
+      }else{
+        res.write('<h1>SUCCESS</h1> <p>Results Found</p>');
+        res.write(JSON.stringify(result));
+        res.end();
+      }
+    });
+  });
+ });
 
 
 server.listen(8000);
