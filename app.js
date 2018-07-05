@@ -4,7 +4,9 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , server = require('http').createServer(app)
   , util = require('util')
-  , db = require('./lib/resume_db.js');
+  , db = require('./lib/resume_db.js')
+  
+
 
 app.use(express.static('public'));
 app.use(cookieParser());
@@ -20,13 +22,13 @@ db.setup();
 
 app.get('/', 
   function (req, res) {
-    res.redirect('/addResume.html');
+    res.redirect('/searchpage2.html');
   }
 )
 
 app.get('/resume', 
   function (req, res) {
-    res.redirect('/addResume.html');
+    res.redirect('/searchpage2.html');
   }
 )
 
@@ -38,7 +40,7 @@ app.get('/resume',
 	
   // Saving the new user to DB
   db.saveResume({
-      user_name: req.body.username,
+      user_name: req.body.user_name,
       work_role: req.body['Work Role'],
 	  clearance: req.body.clearance,
 	  clearance_1_month: req.body.clearance_1_month,
@@ -94,48 +96,42 @@ app.post('/search_resume', function(req, res){
 	console.log("POST /search_resume");
 	console.log( req.body );
 	
-
-	
-//call function db.search
-db.search({
-    work_role: req.body.work_role,
-    clearance: req.body.clearance,
-    tools_experience: req.body.tools_experience,
-},
-
-/*var searchCriteria {}
+var searchCriteria = {};
 if(req.body.work_role != ""){
-	searchCriteria[work_role] = req.body.work_role;
+	searchCriteria["work_role"] = req.body.work_role;
 }
 if(req.body.clearance != ""){
-	searchCriteria[clearance] = req.body.clearance;
+	searchCriteria["clearance"] = req.body.clearance;
 }
 if(req.body.tools_experience != ""){
-	searchCriteria[tools_experience] = req.body.tools_experience;
+	searchCriteria["tools_experience"] = req.body.tools_experience;
 }
-},*/
 
- 
-function(err, cursor) {
-    if(err) {
-      return next(err);
-    }
+db.search(searchCriteria,
+	function(err, cursor){
+		if(err){
+			return next(err);
+		}
 
-    //Retrieve all the resumes in an array.
-    cursor.toArray(function(err, result) {
-      console.log("[DEBUG][/search][cursor.toArray] err:     " + err);
-      console.log("[DEBUG][/search][cursor.toArray] result: " + result);
-      if(err) {
-        res.write('<h1>FAILURE</h1> <p>Search Returned Error</p>');
-        res.write('Error:  ' + err.name + ' with message: ' + err.message);
-      }else{
-        res.write('<h1>SUCCESS</h1> <p>Results Found</p>');
-        res.write(JSON.stringify(result));
-        res.end();
-      }
-    });
-  });
- });
+//retrive all resumes in array
+
+cursor.toArray(function(err, result){
+	console.log("[DEBUG][/search][cursor.toArray]err: "+err);
+	console.log("[DEBUG][/search][cursor.toArray]result: " + result);
+	if(err){
+		res.write('<h1>FAILURE</h1> <p>Search Returned Error</p>');
+		res.write('Error: ' + err.name + 'with message: ' + err.message);
+	}else{
+		res.write('<h1>SUCCESS</h1> <p>Results Found</p>');
+		res.write(JSON.stringify(result));
+		res.end();
+	}
+});
+});
+});
+
+
+
 
 
 server.listen(8000);
