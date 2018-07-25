@@ -123,8 +123,17 @@ cursor.toArray(function(err, result){
 		res.write('Error: ' + err.name + 'with message: ' + err.message);
 	}else{
 		res.write('<h1>SUCCESS</h1> <p>Results Found</p>');
-		res.write(JSON.stringify(result));
-		res.end();
+		
+	res.write("<table border = '1'>");
+	for(var i=0; i<result.length; i++){
+		res.write("<TR><TD>");
+		var n = result[i]['user_name'];
+		res.write(n.toString());
+		res.write("</TD></TR>");
+	}
+res.write("</table>");
+
+res.end();
 	}
 });
 });
