@@ -1,0 +1,7 @@
+<h1>SUCCESS</h1>
+<p> Results Found </p>
+<table border = '1'>
+	<% info.forEach(function(result) { %>
+	<tr><td><a href = "/info/ <%= result.id %>"> <%= result.user_name %></a></td></tr>
+	<% }); %>
+</table>
