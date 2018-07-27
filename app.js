@@ -16,19 +16,23 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.set('view engine', 'ejs');
+
+
 // set up the RethinkDB database
 db.setup();
 
-
+// redirects '/' to searchpage2.html
 app.get('/', 
   function (req, res) {
     res.redirect('/searchpage2.html');
   }
 )
 
+//redirects '/resume' to addResume.html
 app.get('/resume', 
   function (req, res) {
-    res.redirect('/searchpage2.html');
+    res.redirect('/addResume.html');
   }
 )
 
@@ -38,7 +42,7 @@ app.get('/resume',
 	console.log( req.body );
  
 	
-  // Saving the new user to DB
+  // Saving the new user to DB is JSON format
   db.saveResume({
       user_name: req.body.user_name,
       work_role: req.body['Work Role'],
@@ -95,17 +99,15 @@ app.get('/resume',
 app.post('/search_resume', function(req, res){
 	console.log("POST /search_resume");
 	console.log( req.body );
+
 	
 var searchCriteria = {};
-if(req.body.work_role != ""){
+if(req.body.work_role != "" && req.body.clearance != "" && req.body.tools_experience != ""){
 	searchCriteria["work_role"] = req.body.work_role;
-}
-if(req.body.clearance != ""){
 	searchCriteria["clearance"] = req.body.clearance;
-}
-if(req.body.tools_experience != ""){
 	searchCriteria["tools_experience"] = req.body.tools_experience;
 }
+
 
 db.search(searchCriteria,
 	function(err, cursor){
@@ -113,8 +115,7 @@ db.search(searchCriteria,
 			return next(err);
 		}
 
-//retrive all resumes in array
-
+//retrive all resumes in array and display on the webpage 
 cursor.toArray(function(err, result){
 	console.log("[DEBUG][/search][cursor.toArray]err: "+err);
 	console.log("[DEBUG][/search][cursor.toArray]result: " + result);
@@ -122,16 +123,8 @@ cursor.toArray(function(err, result){
 		res.write('<h1>FAILURE</h1> <p>Search Returned Error</p>');
 		res.write('Error: ' + err.name + 'with message: ' + err.message);
 	}else{
-		res.write('<h1>SUCCESS</h1> <p>Results Found</p>');
+		res.render('search_resume', {info: result});
 		
-	res.write("<table border = '1'>");
-	for(var i=0; i<result.length; i++){
-		res.write("<TR><TD>");
-		var n = result[i]['user_name'];
-		res.write(n.toString());
-		res.write("</TD></TR>");
-	}
-res.write("</table>");
 
 res.end();
 	}
@@ -139,9 +132,34 @@ res.end();
 });
 });
 
+app.get('/info/:id', function(req, res){
+	var searchCriteria = {};
+	searchCriteria["id"] = req.params.id;
+	db.search(searchCriteria, 
+		function(err, cursor){
+			if(err){
+				return next(err);
+			}
+			else{
+				cursor.toArray(function(err, result){
+					if(err){
+						res.write('<h1>FAILURE</h1> <p>Search Returned Error</p>');
+						res.write('Error: ' + err.name + 'with message: ' + err.message);
+					}
+					else{
+						console.log(result);
+						res.render('info', {info: result[0]});
+						res.end();
+						
+					}
+				
+				});
 
+			}
+		});
+});
 
-
-
+//tells app to listen on port 8000
 server.listen(8000);
 console.log('[INFO] [app.js]  Resume Application listening on port 8000...');
+
