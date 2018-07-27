@@ -247,6 +247,13 @@
 
 <script>
 
+//Counter for number of training rows
+var training_count=1;
+//Counter for number of certification rows
+var cert_count=1;
+//Counter for number of work history rows
+var work_count=1; 
+
 var express = require('express');
 var app = express();
 
@@ -296,8 +303,7 @@ function fillYearSelect( selectId ){
     }
 }
 
-//Counter for number of training rows
-var training_count=1;
+
 
 //Called when click Add Another button for Training section
 function addTraining(){
@@ -318,8 +324,6 @@ function addTraining(){
 }	
 
 
-//Counter for number of certification rows
-var cert_count=1;
 
 //Called when click Add Another button for Certification section
 function addCert(){
@@ -339,8 +343,6 @@ function addCert(){
     fillYearSelect(idString+"_year");
 }
 
-//Counter for number of work history rows
-var work_count=1; //test12345
 
 //Called when click Add Another button for Work History section
 function addWork(){

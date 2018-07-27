@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin:400); 
+ 
+ body{
+	font-family: 'Cabin', helvetica, arial, sans-serif;
+	 
+ }
+
+
+td, th {
+		  border: solid black; border-width: thin; padding:0;
+		  }
+		  
+	table{
+		border-collapse: collapse;
+		width:30%;
+		height:30%;
+		border: solid black;
+		border-width: thin;
+		padding:0;
+		
+	}
+	
+
+img {
+	position: relative;
+    width: 125px;
+    height: auto;
+	align: center;
+	
+}
+
+
+
+  ul.hmenu{
+    list-style-type: none;
+    margin: 10px;
+    padding: 10px;
+	overflow: hidden;
+  }
+
+ li.hmenu{
+    display: inline-block;
+	float: left;
+  }
+ li.hmenu a{
+   display: block;
+   padding: 8px;
+   background-color: #dddddd;
+  }
+
+  li.hmenu a  {
+     display: block;
+     margin: 5px;
+     padding: .5em 1em;
+     text-decoration: none;
+     text-align: center;
+     color: #fff;
+     background-color: rgb(190, 190, 190);
+     border: 2px solid rgb(175,175,175);
+     border-radius: 6px;
+     text-shadow: #666 .1em .1em .1em;
+   
+     position: relative;
+     -webkit-transition: background-color 0.2s, border-color 0.2s, top 0.2s, box-shadow 0.2s 0.5s;
+  }
+  
+  li.hmenu a:hover, a:focus  {
+    background-color: #000080;
+    border-color: #000080;
+  }
+ li.hmenu a:active{
+    top: 3px;
+
+  }
+
+
+
+h1{
+	color: white;
+	background-color: black;
+}
+
