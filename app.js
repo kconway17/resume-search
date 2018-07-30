@@ -102,11 +102,18 @@ app.post('/search_resume', function(req, res){
 
 	
 var searchCriteria = {};
-if(req.body.work_role != "" && req.body.clearance != "" && req.body.tools_experience != ""){
-	searchCriteria["work_role"] = req.body.work_role;
-	searchCriteria["clearance"] = req.body.clearance;
+if(req.body.work_role != ""){
+		searchCriteria["work_role"] = req.body.work_role;
+}
+else if(req.body.clearance != ""){
+		searchCriteria["clearance"] = req.body.clearance;
+} 
+else if(req.body.tools_experience != ""){
 	searchCriteria["tools_experience"] = req.body.tools_experience;
 }
+	
+	
+	
 
 
 db.search(searchCriteria,
