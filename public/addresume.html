@@ -18,10 +18,12 @@
   
 <body onload="populateFormElements()">
 <form method="POST" action="/resume">
+
 <img src = "pcilogo.png" alt = "PCI Logo">
 
+
 <!-- Creates table in the same format as one-page PCI resumes -->
-<table>
+<table align = "center">
 <tr bgcolor = "#cc0000">
 	<th colspan = "5", style = "color:white;">NAME: <input type="text" id="user_name" name="user_name"/></th>
 </tr>
@@ -237,9 +239,13 @@
 
 </table>
 
+
+ 
 <!-- Insert Submit and Reset buttons -->
+<div style="text-align:center">
 <input type= "submit" value = "Submit" class = "button">
 <input type= "reset" class = "button">
+</div>
 </form>
 
 
