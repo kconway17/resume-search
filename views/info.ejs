@@ -4,7 +4,7 @@
 <head>
     <title>Team Builder App </title>
 	<meta charset="UTF-8">
-	<meta name = "viewport" content - "width=device-width, initial-scale-1">
+	<meta name = "viewport" content = "width=device-width, initial-scale-1">
     <link rel="stylesheet" href="/styles.css">
 	
 	
@@ -16,36 +16,36 @@
 </head> 
    
   
-<body onload="populateFormElements()">
+<body>
 <form method="POST" action="/resume">
+
 <img src = "/pcilogo.png" alt = "PCI Logo">
 
+
 <!-- Creates table in the same format as one-page PCI resumes -->
-<table>
+<table align = "center">
 <tr bgcolor = "#cc0000">
-	<th colspan = "5", style = "color:white;">NAME: <input type="text"  value= "<%= info.user_name %>" readonly/></th>
+	<th colspan = "5", style = "color:white;">NAME: <%= info.user_name %></th>
 </tr>
 
 <div class ="name section">
 <tr>
 <!-- Add Work Role section -->
 	<th style = "color:black;">Work Role</th>
-	<th> <input type="text"  style = "border:none;" value= "<%= info.work_role %>" readonly/></th>
+	<td><%= info.work_role %></td>
 	
+
 
 <!-- Add Security Clearances section -->
 
   <th rowspan = "2">Security Clearances (Highest Level)</th>
   <td rowspan = "2", colspan = "2">
-    <table id="clearanceTable" style="height:50px; border:none;">
-      <tr>
-	  <th><input type="text"  style = "border:none;" value= "<%= info.clearance %>" readonly/></th></tr>
-       <tr><th><input type="text"  style = "border:none;" value= "<%= info.clearance_1_month %>" readonly/></th></tr>
-       <tr><th><input type="text"  style = "border:none;" value= "<%= info.clearance_1_year %>" readonly/></th>
+    <table id="clearanceTable" style="height:50px; border:none;" colspan = "2">
+	  <tr><td colspan = "2"><%= info.clearance %></td></tr>
+       <tr><td colspan = "2"><%= info.clearance_1_month %></td></tr>
+       <tr><td><%= info.clearance_1_year %></td>
       </tr>
     </table>
-
- 
 </tr>
 </div>
 
@@ -54,25 +54,25 @@
 <!-- Add Company section  -->
 <tr>
 	<th>Company</th>
-	<th><input type="text"  style = "border:none; width:200px;" value= "<%= info.company %>" readonly/></th>
+	<td><%= info.company %></td>
 </tr>
 
-<!-- Add Degree section with drop down menu (Y/N) -->
+<!-- Add Degree section  -->
 <tr>
 	<th>Degree</th>
-	<th><input type="text"  style = "border:none;" value= "<%= info.degree %>" readonly/></th>
+	<td><%= info.degree %></td>
 	<th rowspan="1">Advanced Degree</th>
-	<th rowspan="1", colspan = "2"><input type="text"  style = "border:none;" value= "<%= info.advanced_degree %>" readonly/></th>
+	<td rowspan="1", colspan = "2"><%= info.advanced_degree %></td>
 </tr>
 
 <!-- Add Experience section -->
 <tr>
 	<th>Experience</th>
-	<th><input type="text"  style = "border:none;" value= "<%= info.experience %>" readonly/></th>
+	<td><%= info.experience %></td>
 
 <!-- Add Technical Skills section  -->
 	<th rowspan ="1">Technical Skills</th>
-	<th rowspan = "1", colspan = "2"><input type="text"  style = "border:none;" value= "<%= info.technical %>" readonly/></th>
+	<td rowspan = "1", colspan = "2"><%= info.technical %></td>
 </tr>
 </div>
 
@@ -83,36 +83,29 @@
 
 <div class = "Ed, cert, train">
 
+
 <!-- Add Education section -->
 <tr>
 	<th>Education</th>
-	<th><input type="text" style = "border:none;" value= "<%= info.education_degree%>" readonly/></th>
+	<td><%= info.education_degree%></td>
 	
-	<th><input type="text"  style = "border:none;" value= "<%= info.education_advanced_degree %>" readonly/></th>
+	<td><%= info.education_advanced_degree %></td>
 	
 </tr>
 <!-- Add Certification section -->
 <tr>
   <th>Certification</th>
-  <td colspan = "3">
+  <td colspan = "3"><%= info.certification %> - <%= info.cert_1_month %>, <%= info.cert_1_year %></td>
 
 </td>
 </tr>
-  
-  
 
 <!-- Add Training section -->
 <tr>
   <th>Training</th>
-  <td colspan = "3">
-    <table id="trainingTable" border="1" style = "width: 600px">
-      <tr>
-	    <td>
-          <input type="text" style = "border:none;" value= "<%= info.training %>" readonly/>
-	    </td>
-      </tr>
-    </table>
-  </td>
+ <td colspan = "3"><%= info.training %> - <%= info.training_1_month %>, <%= info.training_1_year %></td>
+
+</td>
 </tr>
 </div>
 
@@ -123,7 +116,7 @@
 <div class ="summary">
 <!-- Add text area for user to input executive summary -->
 <tr>
-	<th colspan = "5"> <input type="textarea"  style = "border:none;" style="width: 600px; height:100px; position:relative;"  rows = "4" cols = "100" value= "<%= info.executive_summary %>" readonly/></th>
+	<td colspan = "5"><%= info.executive_summary %></td>
 </tr>
 
 </div>
@@ -139,7 +132,7 @@
   <th>Company/Role:</th>
   <td colspan = "3">
     <table id="workTable" style="width: 600px">
-      <tr><input type="text" style = "border:none;" value= "<%= info.work_1_description %>" readonly/></tr>
+      <tr><%= info.work_1_description %> , <%= info.work_1_to_year %> - <%= info.work_1_from_year %> </tr>
       </tr>
     </table>
   </td>
@@ -153,7 +146,7 @@
 </tr>
 
 <tr>
-	<th colspan = "5"><input type="textarea" style="width:400px; height:70px; border:none;"  value= "<%= info.tools_experience %>" readonly/></th>
+	<td colspan = "5"><%= info.tools_experience %></td>
 	</div>
 	
 <div class = "keywords">
@@ -162,19 +155,134 @@
 	<th colspan = "5", style = "color:white;">KEYWORDS</th>
 </tr>
 <tr>
-	<th colspan = "5"><input type="textarea"  style="width:200px; height:50px; border:none;" value= "<%= info.keywords %>" readonly/></th>
+	<td colspan = "5"><%= info.keywords %></td>
 </tr>
 </div>
 
 </table>
 
-
 </form>
-
-<button type="button" >Back to search results</button> 
-
+<button type="button">Back to search results</button> 
 
 
+<script>
+
+//Counter for number of training rows
+var training_count=1;
+//Counter for number of certification rows
+var cert_count=1;
+//Counter for number of work history rows
+var work_count=1; 
+
+var express = require('express');
+var app = express();
+
+//Called from <body onload=''> to populate form elements like pull-down selects
+function populateFormElements(){
+    fillMonthSelect('cert_1_month')
+    fillMonthSelect('clearance_1_month')
+    fillMonthSelect('training_1_month')
+    fillYearSelect('training_1_year')
+	fillYearSelect('cert_1_year')
+	fillYearSelect('clearance_1_year')
+	fillYearSelect('work_1_to_year')
+	fillYearSelect('work_1_from_year')
+}
+  
+function fillMonthSelect( selectId ){
+    //get the select element using the id passed in from the DOM
+    var select = document.getElementById(selectId);
+    //For 1-12 create option elements
+    for (var i=0; i< 13; i++){
+      //option node
+      var option = document.createElement("option");
+      option.setAttribute("value", ""+i);
+      //text node
+      var optionTxt = document.createTextNode(""+i);
+      //add text to option
+      option.appendChild(optionTxt);
+      //add option to select element
+      select.appendChild(option);
+    }
+}
+
+function fillYearSelect( selectId ){
+    //get the select element using the id passed in from the DOM
+    var select = document.getElementById(selectId);
+    //For 1-12 create option elements
+    for (var i=1985; i< 2019; i++){
+      //option node
+      var option = document.createElement("option");
+      option.setAttribute("value", ""+i);
+      //text node
+      var optionTxt = document.createTextNode(""+i);
+      //add text to option
+      option.appendChild(optionTxt);
+      //add option to select element
+      select.appendChild(option);
+    }
+}
+
+
+
+//Called when click Add Another button for Training section
+function addTraining(){
+    training_count += 1  //increment count
+    var table = document.getElementById("trainingTable");
+    var row   = table.insertRow();
+    var cell  = row.insertCell();
+    //constructs the prefix for the ids needed like 'training_2'
+    var idString = "training_"+training_count;
+    //builds html version of the inputs and selects needed for this row
+    var html= "<input type='text' name='"+idString+"_description'> "
+       +" Month:  <select id='"+idString+"_month' name='"+idString+"_month'></select>"
+       +" Year:   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
+    cell.innerHTML = html;
+    //populate the pull down menus select elements as needed
+    fillMonthSelect(idString+"_month");
+    fillYearSelect(idString+"_year");
+}	
+
+
+
+//Called when click Add Another button for Certification section
+function addCert(){
+    cert_count += 1  //increment count
+    var table = document.getElementById("certTable");
+    var row   = table.insertRow();
+    var cell  = row.insertCell();
+    //constructs the prefix for the ids needed like 'cert_2'
+    var idString = "cert_"+cert_count;
+    //builds html version of the inputs and selects needed for this row
+    var html= "<input type='text' name='"+idString+"_description'> "
+       +" Month:  <select id='"+idString+"_month' name='"+idString+"_month'></select>"
+       +" Year:   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
+    cell.innerHTML = html;
+    //populate the pull down menus select elements as needed
+    fillMonthSelect(idString+"_month");
+    fillYearSelect(idString+"_year");
+}
+
+
+//Called when click Add Another button for Work History section
+function addWork(){
+    work_count += 1  //increment count
+    var table = document.getElementById("workTable");
+    var row   = table.insertRow();
+    var cell  = row.insertCell();
+    //constructs the prefix for the ids needed like 'work_2'
+    var idString = "work_" + work_count;
+    //builds html version of the inputs and selects needed for this row
+    var html= "<input type='text' name='"+idString+"_description'> "
+       +" from   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
+	   + " to   <select id='"+idString+"_year2' name='"+idString+"_year2'></select>"
+    cell.innerHTML = html;
+    //populate the pull down menus select elements as needed
+    fillYearSelect(idString+"_year");
+	fillYearSelect(idString+"_year2");
+}
+
+</script>
 
   
 </body>
