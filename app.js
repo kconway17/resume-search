@@ -55,47 +55,90 @@ app.get('/resume',
 	   resumeData.technical = req.body.Technical;
 	   resumeData.degree_field = req.body.degree_field;
 	   resumeData.advanced_degree_field = req.body.advanced_degree_field;
-	   //resumeData.cert_1_description = req.body.cert_1_description;
-	   // resumeData.cert_1_month = req.body.cert_1_month;
-	   //resumeData.cert_1_year = req.body.cert_1_year;
-	   resumeData.training = req.body.Training;
-	   resumeData.training_1_month = req.body.training_1_month;
-	   resumeData.training_1_year = req.body.training_1_year;
 	   resumeData.executive_summary = req.body.executive_summary;
-	   resumeData.work_1_from_year = req.body.work_1_from_year;
-	   resumeData.work_1_description = req.body.work_1_description;
-	   resumeData.work_1_to_year = req.body.work_1_to_year;
+	   //resumeData.work_1_from_year = req.body.work_1_from_year;
+	  // resumeData.work_1_description = req.body.work_1_description;
+	  // resumeData.work_1_to_year = req.body.work_1_to_year;
 	   resumeData.tools_experience = req.body['Tools Experience'];
 	   resumeData.keywords = req.body.keywords;
 	  resumeData.education_degree = req.body.education_degree;
 	  resumeData.education_advanced_degree = req.body.education_advanced_degree;
 
 	 
-		//create the array
+		//create array
 		   resumeData.certifications = []
 		   //start an index counter at 1
 		   var index = 1;
 		   while(index<10){
-			 //if there is a description we'll add to the array
+			 //if there is a description add to the array
 		       var description = req.body["cert_"+index+"_description"];
 		       if(!description){
-		           //break loop if there is no description
+		           //break loop if no description
 		           break;
 		       }else{
-		          //build a string that looks like "Secret  12/1998"
+		          //build a string 
 		          var cert = req.body["cert_"+index+"_description"]
 		          cert = cert + "  ";
 		          cert = cert + req.body["cert_"+index+"_month"]
 		          cert = cert + "/";
 		          cert = cert + req.body["cert_"+index+"_year"];
-		          //Add the final string to the certifications array, need
-		          //to use index-1 as the array position since arrays are
-		          //zero indexed
+		          //Add the final string to the certifications array
 		          resumeData.certifications[index-1] = cert;
 		       }
 		       //increment the index one value
 		       index = index + 1;
 		   }
+		   
+
+			//create array
+			   resumeData.trainings = []
+			   //start an index counter at 1
+			   var index = 1;
+			   while(index<10){
+				 //if there is a description add to the array
+			       var description = req.body["training_"+index+"_description"];
+			       if(!description){
+			           //break loop if no description
+			           break;
+			       }else{
+			          //build a string 
+			          var training = req.body["training_"+index+"_description"]
+			          training = training + "  ";
+			          training = training + req.body["training_"+index+"_month"]
+			          training = training + "/";
+			          training = training + req.body["training_"+index+"_year"];
+			          //Add the final string to the certifications array
+			          resumeData.trainings[index-1] = training;
+			       }
+			       //increment the index one value
+			       index = index + 1;
+			   }
+			   
+
+				//create array
+				   resumeData.role = []
+				   //start an index counter at 1
+				   var index = 1;
+				   while(index<10){
+					 //if there is a description add to the array
+				       var description = req.body["work_"+index+"_description"];
+				       if(!description){
+				           //break loop if o description
+				           break;
+				       }else{
+				          //build a string 
+				          var work = req.body["work_"+index+"_description"]
+				          work = work + "  ";
+				          work = work + req.body["work_"+index+"_month"]
+				          work = work + "/";
+				          work = work + req.body["work_"+index+"_year"];
+				          //Add the final string to the certifications array
+				          resumeData.role[index-1] = work;
+				       }
+				       //increment the index one value
+				       index = index + 1;
+				   }
+		   
 		   // Saving the new user to DB is JSON format
 		   db.saveResume(resumeData, function(err, saved){
 		 	  
