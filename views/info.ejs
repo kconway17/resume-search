@@ -42,8 +42,8 @@
   <td rowspan = "2", colspan = "2">
     <table id="clearanceTable" style="height:50px; border:none;" colspan = "2">
 	  <tr><td colspan = "2"><%= info.clearance %></td></tr>
-       <tr><td colspan = "2"><%= info.clearance_1_month %></td></tr>
-       <tr><td><%= info.clearance_1_year %></td>
+       <tr><td colspan = "2"><%= info.clearance_1_month %></td>
+       <td><%= info.clearance_1_year %></td>
       </tr>
     </table>
 </tr>
@@ -87,9 +87,11 @@
 <!-- Add Education section -->
 <tr>
 	<th>Education</th>
-	<td><%= info.education_degree%></td>
+	<td><%= info.education_degree%> in 
+	<%= info.degree_field%></td>
 	
-	<td><%= info.education_advanced_degree %></td>
+	<td colspan = "2"><%= info.education_advanced_degree %> in
+	<%= info.advanced_degree_field%></td>
 	
 </tr>
 <!-- Add Certification section -->
@@ -162,8 +164,6 @@
 </table>
 
 </form>
-<button type="button">Back to search results</button> 
-
 
 <script>
 

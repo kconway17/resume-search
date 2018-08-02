@@ -41,35 +41,64 @@ app.get('/resume',
 	console.log("POST /resume");
 	console.log( req.body );
  
-	
-  // Saving the new user to DB is JSON format
-  db.saveResume({
-      user_name: req.body.user_name,
-      work_role: req.body['Work Role'],
-	  clearance: req.body.clearance,
-	  clearance_1_month: req.body.clearance_1_month,
-	  clearance_1_year: req.body.clearance_1_year,
-	  company: req.body.Company,
-	  degree: req.body.Degree,
-	  advanced_degree: req.body['Advanced Degree'],
-	  experience: req.body.Experience,
-	  technical: req.body.Technical,
-	  degree_field: req.body.degree_field,
-	  advanced_degree_field: req.body.advanced_degree_field,
-	  certification: req.body.Certification,
-	  cert_1_month: req.body.cert_1_month,
-	  cert_1_year: req.body.cert_1_year,
-	  training: req.body.Training,
-	  training_1_month: req.body.training_1_month,
-	  training_1_year: req.body.training_1_year,
-	  executive_summary: req.body.executive_summary,
-	  work_1_from_year: req.body.work_1_from_year,
-	  work_1_description: req.body.work_1_description,
-	  work_1_to_year: req.body.work_1_to_year,
-	  tools_experience: req.body['Tools Experience'],
-	  keywords: req.body.keywords
-    },
-    function(err, saved) {
+	 var resumeData = {};
+
+	 resumeData.user_name = req.body.user_name;
+	   resumeData.work_role = req.body['Work Role'];
+	   resumeData.clearance = req.body.clearance;
+	   resumeData.clearance_1_month = req.body.clearance_1_month;
+	   resumeData.clearance_1_year = req.body.clearance_1_year;
+	   resumeData.company = req.body.Company;
+	   resumeData.degree = req.body.Degree;
+	   resumeData.advanced_degree = req.body['Advanced Degree'];
+	   resumeData.experience = req.body.Experience;
+	   resumeData.technical = req.body.Technical;
+	   resumeData.degree_field = req.body.degree_field;
+	   resumeData.advanced_degree_field = req.body.advanced_degree_field;
+	   //resumeData.cert_1_description = req.body.cert_1_description;
+	   // resumeData.cert_1_month = req.body.cert_1_month;
+	   //resumeData.cert_1_year = req.body.cert_1_year;
+	   resumeData.training = req.body.Training;
+	   resumeData.training_1_month = req.body.training_1_month;
+	   resumeData.training_1_year = req.body.training_1_year;
+	   resumeData.executive_summary = req.body.executive_summary;
+	   resumeData.work_1_from_year = req.body.work_1_from_year;
+	   resumeData.work_1_description = req.body.work_1_description;
+	   resumeData.work_1_to_year = req.body.work_1_to_year;
+	   resumeData.tools_experience = req.body['Tools Experience'];
+	   resumeData.keywords = req.body.keywords;
+	  resumeData.education_degree = req.body.education_degree;
+	  resumeData.education_advanced_degree = req.body.education_advanced_degree;
+
+	 
+		//create the array
+		   resumeData.certifications = []
+		   //start an index counter at 1
+		   var index = 1;
+		   while(index<10){
+			 //if there is a description we'll add to the array
+		       var description = req.body["cert_"+index+"_description"];
+		       if(!description){
+		           //break loop if there is no description
+		           break;
+		       }else{
+		          //build a string that looks like "Secret  12/1998"
+		          var cert = req.body["cert_"+index+"_description"]
+		          cert = cert + "  ";
+		          cert = cert + req.body["cert_"+index+"_month"]
+		          cert = cert + "/";
+		          cert = cert + req.body["cert_"+index+"_year"];
+		          //Add the final string to the certifications array, need
+		          //to use index-1 as the array position since arrays are
+		          //zero indexed
+		          resumeData.certifications[index-1] = cert;
+		       }
+		       //increment the index one value
+		       index = index + 1;
+		   }
+		   // Saving the new user to DB is JSON format
+		   db.saveResume(resumeData, function(err, saved){
+		 	  
       console.log("[DEBUG][/resume][saveResume] %s", saved);
       if(err) {
         req.write('<h1>ERROR</h1> <p>There was an error creating the account. Please try again later</p>');
@@ -102,19 +131,16 @@ app.post('/search_resume', function(req, res){
 
 	
 var searchCriteria = {};
-if(req.body.work_role != ""){
+if(req.body.work_role) {
 		searchCriteria["work_role"] = req.body.work_role;
 }
-else if(req.body.clearance != ""){
+if(req.body.clearance != ""){
 		searchCriteria["clearance"] = req.body.clearance;
 } 
-else if(req.body.tools_experience != ""){
+if(req.body.tools_experience != ""){
 	searchCriteria["tools_experience"] = req.body.tools_experience;
 }
 	
-	
-	
-
 
 db.search(searchCriteria,
 	function(err, cursor){
