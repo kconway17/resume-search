@@ -26,4 +26,5 @@ Who do I talk to?
     Kara Conway: kbc4@hood.edu
     
     On the wiki page of this site, you can see my progress as I designed this project and some explanation of my code.
+    https://github.com/kconway17/resume-search/wiki
 
