@@ -11,9 +11,14 @@ What is this application for?
 How do I get set up?
 
     Summary of set up:
+    
+    Install Node.js, Express.js, RethinkDB
 
     git clone git@github.com:kconway17/resume-search.git
     npm install
+    
+    Run RethinkDB
+    To start application: run node app.js
 
 
 Who do I talk to?
