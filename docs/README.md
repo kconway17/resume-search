@@ -15,7 +15,6 @@ How do I get set up?
     Install Node.js, Express.js, RethinkDB
 
     git clone git@github.com:kconway17/resume-search.git
-    npm install
     
     Run RethinkDB
     To start application: run node app.js
