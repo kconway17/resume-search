@@ -22,11 +22,16 @@ td, th {
 	
 
 img {
-	position: relative;
-    width: 125px;
-    height: auto;
-	align: center;
+    width: 165px;
+    height: 180px;
+
 	
+}
+
+#img2{
+	position: relative;
+	width: 145px;
+	height: 135px;
 }
 
 
@@ -40,7 +45,7 @@ img {
 
  li.hmenu{
     display: inline-block;
-	float: left;
+	float: right;
   }
  li.hmenu a{
    display: block;
@@ -73,10 +78,4 @@ img {
 
   }
 
-
-
-h1{
-	color: white;
-	background-color: black;
-}
 
