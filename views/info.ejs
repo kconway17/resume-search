@@ -39,13 +39,7 @@
 <!-- Add Security Clearances section -->
 
   <th rowspan = "2">Security Clearances (Highest Level)</th>
-  <td rowspan = "2", colspan = "2">
-    <table id="clearanceTable" style="height:50px; border:none;" colspan = "2">
-	  <tr><td colspan = "2"><%= info.clearance %></td></tr>
-       <tr><td colspan = "2"><%= info.clearance_1_month %></td>
-       <td><%= info.clearance_1_year %></td>
-      </tr>
-    </table>
+  <td rowspan = "2", colspan = "2"><%= info.clearance %>: <%= info.clearance_1_month %> , <%= info.clearance_1_year %>
 </tr>
 </div>
 

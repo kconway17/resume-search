@@ -56,13 +56,9 @@ app.get('/resume',
 	   resumeData.degree_field = req.body.degree_field;
 	   resumeData.advanced_degree_field = req.body.advanced_degree_field;
 	   resumeData.executive_summary = req.body.executive_summary;
-	   //resumeData.work_1_from_year = req.body.work_1_from_year;
-	  // resumeData.work_1_description = req.body.work_1_description;
-	  // resumeData.work_1_to_year = req.body.work_1_to_year;
-	   resumeData.tools_experience = req.body['Tools Experience'];
 	   resumeData.keywords = req.body.keywords;
-	  resumeData.education_degree = req.body.education_degree;
-	  resumeData.education_advanced_degree = req.body.education_advanced_degree;
+	   resumeData.education_degree = req.body.education_degree;
+	   resumeData.education_advanced_degree = req.body.education_advanced_degree;
 
 	 
 		//create array
