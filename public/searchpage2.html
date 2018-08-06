@@ -6,32 +6,40 @@
 		<meta name = "viewport" content - "width=device-width, initial-scale-1">
 	    <link rel="stylesheet" href="styles.css">
 	<title>Team Builder App</title>
+	
 	<ul class = "hmenu">
   <li class = "hmenu"><a href = "searchpage2.html">Search Page</a></li>
   <li class = "hmenu"><a href = "addResume.html">Input Page</a></li>
+   <img src = "pcilogo2.png" alt = "PCI Logo" id = "img2">
  </ul>
+
 	<style>
 
 h1{
+	
 	color: white;
 	float: center;
-	font-size: 50px;
+	font-size: 60px;
 	top: 100px;
 	left: 100px;
+	text-shadow: #5c5c5c .05em .05em .05em;
 	}
 	
 body{
-	background-color: black;
+	background-color: #284064;
+	
 }
 	
-	@import url(https://fonts.googleapis.com/css?family=Cabin:400);
+
 
 .search{
-	background: #151515;
+	background-image: url("bgrd.png");
 	height: 100%;
 	position: absolute;
 	text-align: center;
 	width: 100%;
+	border: 3px solid black;
+	
 }
 
 .search:before,
@@ -54,17 +62,17 @@ body{
 .search:after {
 	background: #000;
 	background: linear-gradient(left, #151515, #000, #151515);	
-	top: 191px;
+	top: 192px;
 }
 
 .search form {
-	background: #111;
-	background: linear-gradient(#1b1b1b, #111);
+	background: #b9bab8;
+	background: linear-gradient(#1b1b1b, #284064);
 	border: 1px solid #000;
 	box-shadow: inset 0 0 0 1px #272727;
 	display: inline-block;
 	font-size: 0px;
-	margin: 150px auto 0;
+	margin: 100px auto 0;
 	padding: 30px;
 	position: relative;
 	z-index: 1;
@@ -72,7 +80,7 @@ body{
 
 .search input {
 	background: #222;	
-	background: linear-gradient(#333, #222);	
+	background: linear-gradient(#222, #333);	
 	border: 1px solid #444;
 	box-shadow: 0 2px 0 #000;
 	color: #888;
@@ -106,16 +114,16 @@ body{
 	background: linear-gradient(#333933, #222922);
 	border-color: #393;
 	box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
-	color: #efe;
+	color: #ba3030;
 	outline: none;
 }
 
 .search input:focus::-webkit-input-placeholder { 
-	color: #efe;
+	color: #ba3030;
 }
 
 .search input:focus:-moz-placeholder {
-	color: #efe;
+	color: #ba3030;
 }
 
 .search button {
@@ -166,32 +174,36 @@ body{
     }
 }
 
-.footer{
-	background: "pcilogo2.png"; background -repeat: no-repeat;
-	}
+footer{
+background-color: #284064;
+}
 
 
 </style>
 	
-	<img src = "pcilogo2.png" alt = "PCI Logo" align = "right">
+	
 	
 </head>
-	
+
 	<body>
-	<h1 align = "center">Resume Search Form</h1>
+	<h1 align = "center">Resume Search Page</h1>
 	<section class="search">
 	<form method="POST" action="/search_resume">
+
+	
 		<input type="search" name = "work_role" placeholder = "Role">		    	
 		<br><input type="search" name = "clearance" placeholder = "Highest Clearance Level"></br>	    	
 		<br><input type="search" name = "tools_experience" placeholder="Skills"></br>		    	
 		<br><button>Search</button></br>
 	</form>
 </section>
- </body>
+
 
 <footer>
+<p>footer</p>
 </footer>
-
+ </body>
 
 </html>
+
 
