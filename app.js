@@ -29,7 +29,8 @@ app.get('/',
   }
 )
 
-//redirects '/resume' to addResume.html
+//redirects '/resume' to addResume.html 
+//
 app.get('/resume', 
   function (req, res) {
     res.redirect('/addResume.html');
