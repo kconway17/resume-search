@@ -6,18 +6,33 @@
 	<meta charset="UTF-8">
 	<meta name = "viewport" content - "width=device-width, initial-scale-1">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
 	
-	
+<!-- common to every page -->
 <ul class = "hmenu">
   <li class = "hmenu"><a href = "searchpage2.html">Search Page</a></li>
   <li class = "hmenu"><a href = "addResume.html">Input Page</a></li>
-  <img src = "pcilogo.png" alt = "PCI Logo">
+  <img src = "pcilogo2.png" alt = "PCI Logo">
+   <h1 align = "center">Resume Input Page</h1>
  </ul>
+
+
+<style>
+
+.hmenu{background-color: #0E1629;}
+
+body { background-image: url("bgrd.png");}
+
+table {background-color: white;}
+
+</style>
 
 </head> 
    
   
 <body onload="populateFormElements()">
+
+<div class = "body-section">
 <form method="POST" action="/resume">
 
 
@@ -236,7 +251,7 @@
 	<th colspan = "5"><textarea name="keywords"  rows = "2" cols = "40"></textarea></th>
 </tr>
 </div>
-
+</div>
 </table>
 
 
