@@ -35,10 +35,21 @@ td, th {
 	
 
 img {
+<<<<<<< HEAD
     width: 220px;
     height: 210px;
+=======
+    width: 165px;
+    height: 180px;
+>>>>>>> refs/remotes/origin/master
 
 	
+}
+
+#img2{
+	position: relative;
+	width: 145px;
+	height: 135px;
 }
 
 
@@ -95,6 +106,7 @@ img {
   
   
 
+<<<<<<< HEAD
 .search{
 	background-image: url("bgrd.png");
 	height: 100%;
@@ -238,4 +250,6 @@ img {
 
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 
