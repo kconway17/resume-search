@@ -14,7 +14,7 @@
  
  
  body{
-	font-family: Questa Grande Regular, serif;
+	font-family: '2-questa_grande_regular_31', serif;
  }
 
 
@@ -29,7 +29,7 @@ td, th {
 		border: solid black;
 		border-width: thin;
 		padding:0;
-		font-family: Questa Grande Regular, serif;
+		font-family: '2-questa_grande_regular_31', serif;
 		
 	}
 	
