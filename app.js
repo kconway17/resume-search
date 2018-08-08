@@ -45,7 +45,7 @@ app.get('/resume',
 	 var resumeData = {};
 
 	 resumeData.user_name = req.body.user_name;
-	   resumeData.work_role = req.body['Work Role'];
+	   resumeData.work_role = req.body.work_role;
 	   resumeData.clearance = req.body.clearance;
 	   resumeData.clearance_1_month = req.body.clearance_1_month;
 	   resumeData.clearance_1_year = req.body.clearance_1_year;

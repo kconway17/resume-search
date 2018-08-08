@@ -16,23 +16,13 @@
    <h1 align = "center">Resume Input Page</h1>
  </ul>
 
-
-<style>
-
-.hmenu{background-color: #0E1629;}
-
-body { background-image: url("bgrd.png");}
-
-table {background-color: white;}
-
-</style>
-
 </head> 
    
   
 <body onload="populateFormElements()">
 
 <div class = "body-section">
+<fieldset style = "background-image: url("bgrd.png");">
 <form method="POST" action="/resume">
 
 
@@ -47,7 +37,7 @@ table {background-color: white;}
 <tr>
 <!-- Add Work Role section with drop down menu -->
 	<th>Work Role</th>
-	<td><select name = "work_role" id="work_role">
+	<td><select name = "work_role" id="work_role" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>System Engineer</option>
 	<option>Business Consultant</option>
@@ -62,7 +52,7 @@ table {background-color: white;}
   <td rowspan = "2", colspan = "2">
     <table id="clearanceTable" style="height:50px">
       <tr>
-	  <td><select name = "clearance" id="clearance">
+	  <td><select name = "clearance" id="clearance" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>None</option>
 	<option>Public Trust</option>
@@ -72,8 +62,8 @@ table {background-color: white;}
 	<option>CI Poly</option>
 	<option>Full Scope Poly</option>
 	</select>
-          Month:  <select id="clearance_1_month" name="clearance_1_month"></select>
-          Year:   <select id="clearance_1_year" name="clearance_1_year"></select>
+          Month:  <select id="clearance_1_month" name="clearance_1_month" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
+          Year:   <select id="clearance_1_year" name="clearance_1_year" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
 		   
       </tr>
     </table>
@@ -87,7 +77,7 @@ table {background-color: white;}
 <!-- Add Company section with drop down menu -->
 <tr>
 	<th>Company</th>
-	<td><select name = "Company">
+	<td><select name = "Company" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>PCI Strategic Management</option>
 	</select> </td>
@@ -96,14 +86,14 @@ table {background-color: white;}
 <!-- Add Degree section with drop down menu (Y/N) -->
 <tr>
 	<th>Degree</th>
-	<td><select name = "Degree">
+	<td><select name = "Degree" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>Yes</option>
 	<option>No</option>
 	</select>
 	</td>
 	<th rowspan="1">Advanced Degree</th>
-	<td rowspan="1", colspan = "2"><select name = "Advanced Degree">
+	<td rowspan="1", colspan = "2"><select name = "Advanced Degree" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>Yes</option>
 	<option>No</option>
@@ -114,7 +104,7 @@ table {background-color: white;}
 <!-- Add Experience section with drop down menu (years in increments of 5)-->
 <tr>
 	<th>Experience</th>
-	<td><select name = "Experience">
+	<td><select name = "Experience" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>0-5 Years</option>
 	<option>6-10 Years</option>
@@ -127,7 +117,7 @@ table {background-color: white;}
 
 <!-- Add Technical Skills section with drop down menu (Technical/Not Technical) -->
 	<th rowspan ="1">Technical Skills</th>
-	<td rowspan = "1", colspan = "2"><select name = "Technical">
+	<td rowspan = "1", colspan = "2"><select name = "Technical" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option></option>
 	<option>Technical</option>
 	<option>Not Technical</option>
@@ -146,13 +136,13 @@ table {background-color: white;}
 <!-- Add Education section with drop down menu for both degree and advanced degree-->
 <tr>
 	<th>Education</th>
-	<td><select name = "education_degree">
+	<td><select name = "education_degree" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option>Undergrad Degree</option>
 	<option>None</option>
 	<option>Associates Degree</option>
 	<option>Bachelor's Degree</option>
 	</select> in: <input type="text" name="degree_field"></td>
-	<td colspan = "3"><select name = "education_advanced_degree">
+	<td colspan = "3"><select name = "education_advanced_degree" style = "font-family: '2-questa_grande_regular_31', serif;">
 	<option>Advanced Degree</option>
 	<option>None</option>
 	<option>Master's Degree</option>
@@ -168,8 +158,8 @@ table {background-color: white;}
       <tr>
 	    <td>
           <input type="text" name="cert_1_description"> 
-          Month:  <select id="cert_1_month" name="cert_1_month"></select>
-          Year:   <select id="cert_1_year" name="cert_1_year"></select>
+          Month:  <select id="cert_1_month" name="cert_1_month" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
+          Year:   <select id="cert_1_year" name="cert_1_year" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
 	    </td>
       </tr>
     </table>
@@ -185,8 +175,8 @@ table {background-color: white;}
       <tr>
 	    <td>
           <input type="text" name="training_1_description"> 
-          Month:  <select id="training_1_month" name="training_1_month"></select>
-          Year:   <select id="training_1_year" name="training_1_year"></select>
+          Month:  <select id="training_1_month" name="training_1_month" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
+          Year:   <select id="training_1_year" name="training_1_year" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
 	    </td>
       </tr>
     </table>
@@ -220,8 +210,8 @@ table {background-color: white;}
   <td colspan = "3">
     <table id="workTable" style="width: 600px">
       <tr><td><input type="text" name="work_1_description"> 
-		 from <select id="work_1_from_year" name="work_1_from_year"></select>
-          to <select id="work_1_to_year" name="work_1_to_year"></select>
+		 from <select id="work_1_from_year" name="work_1_from_year" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
+          to <select id="work_1_to_year" name="work_1_to_year" style = "font-family: '2-questa_grande_regular_31', serif;"></select>
 	    </td>
       </tr>
     </table>
@@ -262,7 +252,7 @@ table {background-color: white;}
 <input type= "reset" class = "button">
 </div>
 </form>
-
+</fieldset>
 
 
 
