@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Team Builder App </title>
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale-1">
+    <link rel="stylesheet" href="styles.css">
+	<img src = "pcilogo.png" alt = "PCI Logo">
+	
+<!-- common to every page -->
+ 
+ <style>
+
+.hmenu{background-color: #0E1629;
+font-family: '2-questa_grande_regular_31', serif;
+}
+
+body { background-image: url("/bgrd.png");
+font-family: '2-questa_grande_regular_31', serif;
+}
+
+table {background-color: white;
+font-family: '2-questa_grande_regular_31', serif;
+}
+
+</style>
+
+</head> 
+   
+  
+<body id='bodyTag'>
+<form method="POST" action="/resume">
+
+
+
+<!-- Creates table in the same format as one-page PCI resumes -->
+<table align = "center">
+<tr bgcolor = "#cc0000">
+	<th colspan = "5", style = "color:white;">NAME: <%= info.user_name %></th>
+</tr>
+
+<div class ="name section">
+<tr>
+<!-- Add Work Role section -->
+	<th style = "color:black;">Work Role</th>
+	<td><%= info.work_role %></td>
+	
+
+
+<!-- Add Security Clearances section -->
+
+  <th rowspan = "2">Security Clearances (Highest Level)</th>
+  <td rowspan = "2", colspan = "2"><%= info.clearance %>: <%= info.clearance_1_month %> , <%= info.clearance_1_year %>
+</tr>
+</div>
+
+
+
+<!-- Add Company section  -->
+<tr>
+	<th>Company</th>
+	<td><%= info.company %></td>
+</tr>
+
+<!-- Add Degree section  -->
+<tr>
+	<th>Degree</th>
+	<td><%= info.degree %></td>
+	<th rowspan="1">Advanced Degree</th>
+	<td rowspan="1", colspan = "2"><%= info.advanced_degree %></td>
+</tr>
+
+<!-- Add Experience section -->
+<tr>
+	<th>Experience</th>
+	<td><%= info.experience %></td>
+
+<!-- Add Technical Skills section  -->
+	<th rowspan ="1">Technical Skills</th>
+	<td rowspan = "1", colspan = "2"><%= info.technical %></td>
+</tr>
+</div>
+
+
+<tr bgcolor = "#19324d">
+	<th colspan = "5", style = "color:white;">EDUCATION, CERTIFICATION, AND TRAINING </th>
+</tr>
+
+<div class = "Ed, cert, train">
+
+
+<!-- Add Education section -->
+<tr>
+	<th>Education</th>
+	<td><%= info.education_degree%> in 
+	<%= info.degree_field%></td>
+	
+	<td colspan = "2"><%= info.education_advanced_degree %> in
+	<%= info.advanced_degree_field%></td>
+	
+</tr>
+<!-- Add Certification section -->
+<tr>
+  <th>Certification</th>
+ 
+  <td colspan = "3"><%= info.certifications[0][0] %> - <%= info.certifications[0][1] %>, <%= info.certifications[0][2] %>
+  <% for(var i = 1; i < info.certifications.length; i++) { %>
+  	<br><%= info.certifications[i][0] %> - <%= info.certifications[i][1] %>, <%= info.certifications[i][2] %>
+  <% } %>
+  </td>
+</tr>
+
+<!-- Add Training section -->
+<tr>
+  <th>Training</th>
+ <td colspan = "3"><%= info.trainings[0][0] %> - <%= info.trainings[0][1] %>, <%= info.trainings[0][2] %>
+ <% for(var i = 1; i < info.certifications.length; i++) { %>
+  	<br><%= info.trainings[i][0] %> - <%= info.trainings[i][1] %>, <%= info.trainings[i][2] %>
+  <% } %>
+
+</td>
+</tr>
+</div>
+
+<tr bgcolor = "#19324d">	
+	<th colspan = "5", style = "color:white;">EXECUTIVE SUMMARY </th>
+</tr>
+
+<div class ="summary">
+<!-- Add text area for user to input executive summary -->
+<tr>
+	<td colspan = "5"><%= info.executive_summary %></td>
+</tr>
+
+</div>
+
+<tr bgcolor = "#19324d">
+	<th colspan = "5", style = "color:white;">WORK HISTORY</th>
+</tr>
+
+<div class = "work history">
+
+<!-- Add Work History section -->
+<tr>
+  <th>Company/Role:</th>
+  <td colspan = "3">
+    <table id="workTable" style="width: 600px">
+      <tr><%= info.role[0][0] %> , <%= info.role[0][1] %> - <%= info.role[0][2] %>
+      	<% for(var i = 1; i < info.certifications.length; i++) { %>
+  			<br><%= info.role[i][0] %> - <%= info.role[i][1] %>, <%= info.role[i][2] %>
+  		<% } %>
+       </tr>
+    </table>
+  </td>
+</tr>
+</div>
+
+<div class = "tools experience">
+<!-- Add tools experience section -->
+<tr bgcolor = "#19324d">
+	<th colspan = "5", style = "color:white;">TOOLS EXPERIENCE</th>
+</tr>
+
+<tr>
+	<td colspan = "5"><%= info.tools_experience %></td>
+	</div>
+	
+<div class = "keywords">
+<!-- Add text area for user to input keywords-->
+<tr bgcolor = "#19324d">
+	<th colspan = "5", style = "color:white;">KEYWORDS</th>
+</tr>
+<tr>
+	<td colspan = "5"><%= info.keywords %></td>
+</tr>
+</div>
+
+</table>
+
+</form>
+
+  
+</body>
+
+</html>

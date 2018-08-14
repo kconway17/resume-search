@@ -6,37 +6,121 @@
 	<meta charset="UTF-8">
 	<meta name = "viewport" content = "width=device-width, initial-scale-1">
     <link rel="stylesheet" href="/styles.css">
-	<link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheet.css" type="text/css" charset="utf-8" />
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	
 <!-- common to every page -->
 <ul class = "hmenu">
   <li class = "hmenu"><a href = "/searchpage2.html">Search Page</a></li>
   <li class = "hmenu"><a href = "/addResume.html">Input Page</a></li>
-  <img src = "/pcilogo2.png" alt = "PCI Logo">
   <h1 align = "center">Resume Return Page</h1>
  </ul>
  
  <style>
-
-.hmenu{background-color: #0E1629;
-font-family: '2-questa_grande_regular_31', serif;
+h1{
+	color: white;
+    font-weight: 600;
+	font-family: '2-questa_grande_regular_31', serif;
+	float: center;
+	font-size: 60px;
+	top: 200px;
+	left: 100px;
+	text-shadow: #5c5c5c .01em .01em .01em;
+	line-height: 100px;
+	letter-spacing: 2.5px;
 }
 
-body { background-image: url("/bgrd.png");
-font-family: '2-questa_grande_regular_31', serif;
+body { background-image: url("/call-to-action.png");
 }
 
 table {background-color: white;
 font-family: '2-questa_grande_regular_31', serif;
 }
 
+ #form {
+ 	width: 100%;
+ 	height: 200px;
+ 	color: white;
+	background-color: #0e1629;
+ 	
+ }
+ #formId {
+ 	padding-top: 1rem;
+ 	text-align: center;
+ 	font-family: '2-questa_grande_regular_31', serif;
+ 	width:300;
+ 	height: 200px;
+ }
+ 
+.navigation-menu .navbar-nav  li a {
+    color: white;
+    text-transform: uppercase;
+	text-align: right;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 10px 5px;
+    -webkit-transition: .3s;
+    transition: .3s;
+    font-weight: 600;
+}
+
+
+.navigation-menu .navbar-nav li a:hover {
+    background: none;
+    color: #ba3030;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.nav li a:focus,
+.nav li a:hover {
+    background: none;
+    color: #ba3030;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+	text-align: right;
+	}
+
+.navbar {
+    margin: 0;
+	text-align: right;
+}
+
+
+.navigation-background {
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    background: #ba3030;
+}
+
+.navigation-background {
+    padding-top: 10px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.navigation-background {
+	color: #0E1629;
+}
+
+.navigation-background .navigation-menu .navbar-nav li a {
+    color: white;
+    padding: 5px 5px;
+    -webkit-transition: .3s;
+    transition: .3s;
+	float: right;
+}
+
+.navigation-background .navigation-menu .navbar-nav li a:hover {
+    color: #0E1629;
 </style>
+
+
 
 </head> 
    
   
-<body>
-<fieldset>
+<body id='bodyTag'>
 <form method="POST" action="/resume">
 
 
@@ -110,15 +194,21 @@ font-family: '2-questa_grande_regular_31', serif;
 <!-- Add Certification section -->
 <tr>
   <th>Certification</th>
-  <td colspan = "3"><%= info.certification %> - <%= info.cert_1_month %>, <%= info.cert_1_year %></td>
-
-</td>
+ 
+  <td colspan = "3"><%= info.certifications[0][0] %> - <%= info.certifications[0][1] %>, <%= info.certifications[0][2] %>
+  <% for(var i = 1; i < info.certifications.length; i++) { %>
+  	<br><%= info.certifications[i][0] %> - <%= info.certifications[i][1] %>, <%= info.certifications[i][2] %>
+  <% } %>
+  </td>
 </tr>
 
 <!-- Add Training section -->
 <tr>
   <th>Training</th>
- <td colspan = "3"><%= info.training %> - <%= info.training_1_month %>, <%= info.training_1_year %></td>
+ <td colspan = "3"><%= info.trainings[0][0] %> - <%= info.trainings[0][1] %>, <%= info.trainings[0][2] %>
+ <% for(var i = 1; i < info.trainings.length; i++) { %>
+  	<br><%= info.trainings[i][0] %> - <%= info.trainings[i][1] %>, <%= info.trainings[i][2] %>
+  <% } %>
 
 </td>
 </tr>
@@ -147,8 +237,11 @@ font-family: '2-questa_grande_regular_31', serif;
   <th>Company/Role:</th>
   <td colspan = "3">
     <table id="workTable" style="width: 600px">
-      <tr><%= info.work_1_description %> , <%= info.work_1_to_year %> - <%= info.work_1_from_year %> </tr>
-      </tr>
+      <tr><%= info.role[0][0] %> , <%= info.role[0][1] %> - <%= info.role[0][2] %>
+      	<% for(var i = 1; i < info.role.length; i++) { %>
+  			<br><%= info.role[i][0] %> - <%= info.role[i][1] %>, <%= info.role[i][2] %>
+  		<% } %>
+       </tr>
     </table>
   </td>
 </tr>
@@ -177,123 +270,37 @@ font-family: '2-questa_grande_regular_31', serif;
 </table>
 
 </form>
-</fieldset>
+<br>
+<fieldset>
+<div id="form">
+<form id="formId"  onsubmit="return false">
+<h2>Email Resume</h2>
+<p>If you wish to send to more than one person, separate email addresses with a comma.</p>
+<input id="emails" type="text" placeholder="example@email.com" name="emails" />
+<button type="submit" onclick="sendEmail()">Send Email</button>
+</form>
+</div>
 
+</fieldset>
 <script>
 
-//Counter for number of training rows
-var training_count=1;
-//Counter for number of certification rows
-var cert_count=1;
-//Counter for number of work history rows
-var work_count=1; 
-
-var express = require('express');
-var app = express();
-
-//Called from <body onload=''> to populate form elements like pull-down selects
-function populateFormElements(){
-    fillMonthSelect('cert_1_month')
-    fillMonthSelect('clearance_1_month')
-    fillMonthSelect('training_1_month')
-    fillYearSelect('training_1_year')
-	fillYearSelect('cert_1_year')
-	fillYearSelect('clearance_1_year')
-	fillYearSelect('work_1_to_year')
-	fillYearSelect('work_1_from_year')
-}
-  
-function fillMonthSelect( selectId ){
-    //get the select element using the id passed in from the DOM
-    var select = document.getElementById(selectId);
-    //For 1-12 create option elements
-    for (var i=0; i< 13; i++){
-      //option node
-      var option = document.createElement("option");
-      option.setAttribute("value", ""+i);
-      //text node
-      var optionTxt = document.createTextNode(""+i);
-      //add text to option
-      option.appendChild(optionTxt);
-      //add option to select element
-      select.appendChild(option);
-    }
+var sendEmail = function() {
+if(document.getElementById("emails").value) {
+var data = <%- JSON.stringify(info) %>
+data.emails = document.getElementById("emails").value;
+document.getElementById("formId").reset();
+$.ajax({
+  type: "POST",
+  url: "/sendEmail",
+  data: data,
+  success: function() {
+  alert("Email has been sent")},
+  error: function(status) {
+  //console.log(status.status)
+  alert("something went wrong")}
+});
 }
 
-function fillYearSelect( selectId ){
-    //get the select element using the id passed in from the DOM
-    var select = document.getElementById(selectId);
-    //For 1-12 create option elements
-    for (var i=1985; i< 2019; i++){
-      //option node
-      var option = document.createElement("option");
-      option.setAttribute("value", ""+i);
-      //text node
-      var optionTxt = document.createTextNode(""+i);
-      //add text to option
-      option.appendChild(optionTxt);
-      //add option to select element
-      select.appendChild(option);
-    }
-}
-
-
-
-//Called when click Add Another button for Training section
-function addTraining(){
-    training_count += 1  //increment count
-    var table = document.getElementById("trainingTable");
-    var row   = table.insertRow();
-    var cell  = row.insertCell();
-    //constructs the prefix for the ids needed like 'training_2'
-    var idString = "training_"+training_count;
-    //builds html version of the inputs and selects needed for this row
-    var html= "<input type='text' name='"+idString+"_description'> "
-       +" Month:  <select id='"+idString+"_month' name='"+idString+"_month'></select>"
-       +" Year:   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
-    cell.innerHTML = html;
-    //populate the pull down menus select elements as needed
-    fillMonthSelect(idString+"_month");
-    fillYearSelect(idString+"_year");
-}	
-
-
-
-//Called when click Add Another button for Certification section
-function addCert(){
-    cert_count += 1  //increment count
-    var table = document.getElementById("certTable");
-    var row   = table.insertRow();
-    var cell  = row.insertCell();
-    //constructs the prefix for the ids needed like 'cert_2'
-    var idString = "cert_"+cert_count;
-    //builds html version of the inputs and selects needed for this row
-    var html= "<input type='text' name='"+idString+"_description'> "
-       +" Month:  <select id='"+idString+"_month' name='"+idString+"_month'></select>"
-       +" Year:   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
-    cell.innerHTML = html;
-    //populate the pull down menus select elements as needed
-    fillMonthSelect(idString+"_month");
-    fillYearSelect(idString+"_year");
-}
-
-
-//Called when click Add Another button for Work History section
-function addWork(){
-    work_count += 1  //increment count
-    var table = document.getElementById("workTable");
-    var row   = table.insertRow();
-    var cell  = row.insertCell();
-    //constructs the prefix for the ids needed like 'work_2'
-    var idString = "work_" + work_count;
-    //builds html version of the inputs and selects needed for this row
-    var html= "<input type='text' name='"+idString+"_description'> "
-       +" from   <select id='"+idString+"_year' name='"+idString+"_year'></select>"
-	   + " to   <select id='"+idString+"_year2' name='"+idString+"_year2'></select>"
-    cell.innerHTML = html;
-    //populate the pull down menus select elements as needed
-    fillYearSelect(idString+"_year");
-	fillYearSelect(idString+"_year2");
 }
 
 </script>

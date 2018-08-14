@@ -1,7 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+
+<style>
+
+       .well {
+
+
+display: block;
+
+  width: 100%;
+
+  position: relative;
+
+  top: 0;
+
+  overflow: hidden;
+
+  z-index: 9;
+
+  margin-bottom: 30px;
+
+  -webkit-border-radius: 7px;
+
+  -moz-border-radius: 7px;
+
+  -ms-border-radius: 7px;
+
+  border-radius: 7px;
+
+  -webkit-transition: 0.1s;
+
+  -o-transition: 0.1s;
+
+  transition: 0.1s;
+
+       }
+
+      
+
+       .well:hover, .well:focus {
+
+              -webkit-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.4);
+
+  -moz-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.4);
+
+  -ms-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.4);
+
+  -o-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.4);
+
+  box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.4);
+
+  text-decoration: none;
+
+  top: -10px;
+
+       }
+
+       </style>
+  
+  </head>
+<body>
+
 <h1>SUCCESS</h1>
 <p> Results Found </p>
-<table border = '1'>
+
 	<% info.forEach(function(result) { %>
-	<tr><td><a href = "/info/<%= result.id %>"> <%= result.user_name %></a></td></tr>
+<div class="row">
+        <div class="col-sm-3">
+        <a href = "/info/<%= result.id %>">
+          <div class="well w3-animate-zoom">
+           
+           <p><img src="/pcilogo.png" class="img-circle" height="55" width="55" alt="Avatar"><%= result.user_name %></p>
+          </div>
+        </a>
+        </div>
+</div>
 	<% }); %>
-</table>
+</body>
+</html>
