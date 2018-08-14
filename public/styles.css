@@ -105,8 +105,8 @@ img[src="edit.png"]{
 }
 
 img[src="pcilogo.png"]{
-	height: 175px;
-	width: 175px;
+	height: 85%;
+	width: 85%;
 }
 
 img[src="pcilogo2.png"]{
@@ -195,7 +195,7 @@ table{
 	font-family: '2-questa_grande_regular_31', serif;
 	float: center;
 	font-size: 60px;
-	text-shadow: #5c5c5c .01em .01em .01em;
+	text-shadow: #5c5c5c .05em .05em .05em;
 	line-height: 200px;
 
 }
@@ -473,7 +473,7 @@ table{
     z-index: 9999;
     -webkit-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out;
-	 background-color: #0e1629;
+	 background-color: transparent;
 
 }
 
@@ -502,15 +502,17 @@ table{
 
 .navigation-menu .navbar-nav  li a {
     color: white;
+	text-shadow: #5c5c5c .05em .05em .05em;
     text-transform: uppercase;
 	text-align: right;
     font-size: 20px;
-    letter-spacing: 1px;
-    padding: 10px 5px;
+    letter-spacing: 1.5px;
+    padding: 15px 15px;
     -webkit-transition: .3s;
     transition: .3s;
     font-weight: 600;
 }
+
 
 
 .navigation-menu .navbar-nav li a:hover {
@@ -563,7 +565,7 @@ table{
     color: #0E1629;
 }
 .section-space-padding {
-	background-color:#0E1629;
+	background-color: #F9F9F9;
 }
 .section-space-padding2 {
 	background: url(pic.png);
@@ -1079,7 +1081,7 @@ ul.portfolio li.active {
 /* Services */
 
 .services-section {
-  background-color: #F9F9F9;
+background-ima
 
 }
 
@@ -1375,7 +1377,7 @@ ul.portfolio li.active {
 
 @media only screen and (min-width: 767px) and (max-width: 991px) {
     .navigation-menu .navbar-nav li a {
-        padding: 30px 11px;
+        padding: 20px 20px;
         font-size: 12px;
     }
     
@@ -1955,6 +1957,7 @@ ul.portfolio li.active {
 .uipasta-credit a:hover {
 	color: #f7639a;
 }
+
 
 
 
