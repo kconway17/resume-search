@@ -58,16 +58,41 @@
 
        
        /* Scroll Naviagation Background Change with Sticky Navigation */
-		 
-        $(window).on('scroll', function () {
-            if ($(window).scrollTop() > 100) {
+	
+
+$(window).on('scroll', function () {
+
+            if ($(window).scrollTop() > $(".section-space-padding2").height()) {
+
                 $('.header-top-area').addClass('navigation-background');
+
             } else {
+
                 $('.header-top-area').removeClass('navigation-background');
+
             }
+
         });
-		
-		
+
+		$(window).on('scroll', function () {
+
+                     let scroll = $(this).scrollTop();
+
+                     let opacity = 1 - (scroll / 500);
+
+                     let translateY = scroll - scroll/2 + "px";
+
+                     let scale = 1 - (scroll/1000);
+
+                     $(".section-title").css('transform', 'translateY(' + translateY + ') scale(' + scale + ')');
+
+                     $(".section-title").css('opacity', opacity);
+
+                     $(".section-title").css('scale', scale);
+
+                     $(".section-space-padding2").css('opacity', opacity);
+
+              })
 		
 		
        /* Mobile Navigation Hide or Collapse on Click */

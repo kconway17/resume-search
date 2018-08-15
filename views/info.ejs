@@ -5,18 +5,20 @@
     <title>Team Builder App </title>
 	<meta charset="UTF-8">
 	<meta name = "viewport" content = "width=device-width, initial-scale-1">
-    <link rel="stylesheet" href="/styles.css">
+    
+    <!-- All CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="/plugin.css">
+    
+    <!-- Main CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/styles.css">
 	<link rel="stylesheet" href="/stylesheet.css" type="text/css" charset="utf-8" />
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	
-<!-- common to every page -->
-<ul class = "hmenu">
-  <li class = "hmenu"><a href = "/searchpage2.html">Search Page</a></li>
-  <li class = "hmenu"><a href = "/addResume.html">Input Page</a></li>
-  <h1 align = "center">Resume Return Page</h1>
- </ul>
- 
+    
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+    
  <style>
+
+
 h1{
 	color: white;
     font-weight: 600;
@@ -39,80 +41,45 @@ font-family: '2-questa_grande_regular_31', serif;
 
  #form {
  	width: 100%;
- 	height: 200px;
- 	color: white;
-	background-color: #0e1629;
- 	
+ 	height: 400px;
+ 	font-color: #0e1629;
+	background-color: #f7f7f7;
+	margin-top: 2px solid #0e1629;
+	margin-bottom: 2px solid black;
+
  }
  #formId {
- 	padding-top: 1rem;
+ 	padding-top: 12rem;
  	text-align: center;
  	font-family: '2-questa_grande_regular_31', serif;
  	width:300;
  	height: 200px;
+	color: #0e1629;
+	margin-top: 2px solid #0e1629;
+	margin-bottom: 2px solid black;
+	
  }
  
-.navigation-menu .navbar-nav  li a {
-    color: white;
-    text-transform: uppercase;
-	text-align: right;
-    font-size: 20px;
-    letter-spacing: 1px;
-    padding: 10px 5px;
-    -webkit-transition: .3s;
-    transition: .3s;
-    font-weight: 600;
-}
-
-
-.navigation-menu .navbar-nav li a:hover {
-    background: none;
-    color: #ba3030;
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-.nav li a:focus,
-.nav li a:hover {
-    background: none;
-    color: #ba3030;
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-	text-align: right;
+ #resume{
+	margin-top: 75px;
+	margin-bottom: 75px;
 	}
+	
+	#formId p{
+	color: #0e1629;
+	}
+	
+	h2{
+	font-weight: bold
 
-.navbar {
-    margin: 0;
-	text-align: right;
-}
+	}
+	
+.contact p{
+	color: white;
+	}
+ 
 
-
-.navigation-background {
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-    background: #ba3030;
-}
-
-.navigation-background {
-    padding-top: 10px;
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-.navigation-background {
-	color: #0E1629;
-}
-
-.navigation-background .navigation-menu .navbar-nav li a {
-    color: white;
-    padding: 5px 5px;
-    -webkit-transition: .3s;
-    transition: .3s;
-	float: right;
-}
-
-.navigation-background .navigation-menu .navbar-nav li a:hover {
-    color: #0E1629;
+ 
 </style>
 
 
@@ -121,7 +88,52 @@ font-family: '2-questa_grande_regular_31', serif;
    
   
 <body id='bodyTag'>
-<form method="POST" action="/resume">
+ <header id="home">
+
+		<div class="header-top-area">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        	<div class="logo">
+                            <a href="http://www.pci-sm.com/"><img src = "/pcilogo.png" alt = "pcilogo" height = "85%" width = "85%"></a>
+                        </div>
+                    </div>
+					
+                        <div class="navigation-menu">
+                            <div class="navbar">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a class="smoth-scroll" href="/searchpage2.html">Search Resumes<div class="ripple-wrapper"></div></a>
+                                        </li>
+                                        <li><a class="smoth-scroll" href="/addresume.html">Input Resumes</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+				</div>
+			</div>
+
+     </header>
+	      <!-- Experience Start -->
+    <section class="section-space-padding2">
+
+				<div class="section-title">
+                        <h1>Resume Return Page</h1>
+                         
+                    </div>
+
+    </section>
+<form id = "resume" method="POST" action="/resume">
 
 
 
@@ -268,20 +280,66 @@ font-family: '2-questa_grande_regular_31', serif;
 </div>
 
 </table>
-
-</form>
 <br>
-<fieldset>
+<div style="text-align:center">
+<a href="#" onclick = "window.history.back()" class="btn btn-default btn-lg">
+         <i class = "icon-arrow-left-circle"></i> Back to Search Results</a>
+</div>
+</form>
+
+
+<br>
+
 <div id="form">
+
 <form id="formId"  onsubmit="return false">
+
 <h2>Email Resume</h2>
 <p>If you wish to send to more than one person, separate email addresses with a comma.</p>
 <input id="emails" type="text" placeholder="example@email.com" name="emails" />
-<button type="submit" onclick="sendEmail()">Send Email</button>
+<button type="submit" onclick="sendEmail()" class = "btn btn-default">Send Email</button>
+<br></br>
+
 </form>
 </div>
 
-</fieldset>
+    <!-- Footer Start -->
+    <footer>
+        <section class="call-to-action bg-cover section-space-padding text-center">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-7">
+             <h2>Contact</h2>
+			 <a class="button button-style button-style-color-2 smoth-scroll" href="http://www.pci-sm.com/">PCI Strategic Management</a>
+             </div>
+             
+            <div class="col-md-4">
+             <div class="text-center">
+			   <p class = "contact"> Address:
+    <br>6811 Benjamin Franklin Dr., Suite 200
+    <br>Columbia, MD 21046
+
+	<br> Tel: 410.312.0885
+
+    <br>Fax: 410.312.0888
+
+    <br>Email: info@pci-sm.com
+
+
+            </div>
+            
+            </div>    
+          </div>
+         </div>
+       </section>
+    </footer>
+    <!-- Footer End -->
+        
+    <!-- Back to Top Start -->
+    <a href="#" class="scroll-to-top"><i class="icon-arrow-up-circle"></i></a>
+    <!-- Back to Top End -->
+    
+    
 <script>
 
 var sendEmail = function() {
@@ -304,7 +362,13 @@ $.ajax({
 }
 
 </script>
-
+ 
+    <!-- All Javascript Plugins  -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/plugin.js"></script>
+    
+    <!-- Main Javascript File  -->
+    <script type="text/javascript" src="/js/scripts.js"></script>
   
 </body>
 

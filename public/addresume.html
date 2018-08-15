@@ -90,16 +90,11 @@
         <!-- Experience Start -->
     <section class="section-space-padding2">
 
-        <div class="container">
-           <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
+				<div class="section-title">
                         <h1>Resume Input Page</h1>
                          
                     </div>
-                </div>
-            </div>
-        </div>
+
     </section>
     <!-- Experience End -->
 	  
@@ -329,8 +324,9 @@
 
 <!-- Insert Submit and Reset buttons -->
 <div style="text-align:center">
-<input type= "submit" value = "Submit" class = "button">
-<input type= "reset" class = "button">
+<input type= "submit" value = "Submit" class = "btn btn-default">
+<input type= "reset" class = "btn btn-default">
+<br></br>
 </div>
 
 </form>
@@ -391,9 +387,9 @@
         <section class="call-to-action bg-cover section-space-padding text-center">
        <div class="container">
          <div class="row">
-           <div class="col-md-8">
-             <h1>Contact</h1>
-			 <a class="button button-style button-style-color-2 smoth-scroll" href="http://www.pci-sm.com/">PCI Strategic Management</a>
+           <div class="col-md-7">
+             <h2>Contact</h2>
+			 <a href="http://www.pci-sm.com/">PCI Strategic Management</a>
              </div>
              
             <div class="col-md-4">
@@ -461,9 +457,16 @@ function fillMonthSelect( selectId ){
     for (var i=0; i< 13; i++){
       //option node
       var option = document.createElement("option");
-      option.setAttribute("value", ""+i);
+      if (i===0){
+		option.setAttribute("value", "");
+      //text node
+      var optionTxt = document.createTextNode("");
+	  }
+	  else{
+	  option.setAttribute("value", ""+i);
       //text node
       var optionTxt = document.createTextNode(""+i);
+	  }
       //add text to option
       option.appendChild(optionTxt);
       //add option to select element
@@ -475,12 +478,19 @@ function fillYearSelect( selectId ){
     //get the select element using the id passed in from the DOM
     var select = document.getElementById(selectId);
     //For 1-12 create option elements
-    for (var i=1985; i< 2019; i++){
+    for (var i=1984; i< 2019; i++){
       //option node
       var option = document.createElement("option");
+	  if(i===1984){
+		option.setAttribute("value", "");
+      //text node
+      var optionTxt = document.createTextNode("");
+	  }
+	  else{
       option.setAttribute("value", ""+i);
       //text node
       var optionTxt = document.createTextNode(""+i);
+	  }
       //add text to option
       option.appendChild(optionTxt);
       //add option to select element

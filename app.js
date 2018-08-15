@@ -72,7 +72,7 @@ app.get('/resume',
 
   function (req, res) {
 
-    res.redirect('/addResume.html');
+    res.redirect('/addresume.html');
 
   }
 
