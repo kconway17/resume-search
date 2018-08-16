@@ -62,7 +62,7 @@
 
 $(window).on('scroll', function () {
 
-            if ($(window).scrollTop() > $(".section-space-padding2").height()) {
+            if ($(window).scrollTop() > $(".section-space-padding2").height() +200) {
 
                 $('.header-top-area').addClass('navigation-background');
 
@@ -80,7 +80,9 @@ $(window).on('scroll', function () {
 
                      let opacity = 1 - (scroll / 500);
 
-                     let translateY = scroll - scroll/2 + "px";
+                     let translateY = scroll/4 + "px";
+					 
+					 let translateY2 = scroll/2 + "px";
 
                      let scale = 1 - (scroll/1000);
 
@@ -91,6 +93,8 @@ $(window).on('scroll', function () {
                      $(".section-title").css('scale', scale);
 
                      $(".section-space-padding2").css('opacity', opacity);
+					 
+					 $(".section-space-padding2").css('transform', 'translateY(' + translateY2 + ')' );
 
               })
 		

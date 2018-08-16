@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../public/stylesheet.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- All CSS Plugins -->
-    <link rel="stylesheet" type="text/css" href="/plugin.css">
+    <link rel="stylesheet" type="text/css" href="../public/plugin.css">
     
     <!-- Main CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles.css">
 
     
     <!-- Google Web Fonts  -->
@@ -22,81 +22,11 @@
     
 
 <style>
-h1 {
-	font-family: '2-questa_grande_regular_31', serif;
-	font-size: 45px;
-	
-	}
-p{
-	font-family: '2-questa_grande_regular_31', serif;
-	font-size: 20px;
-	color: #0e1629;
-	}
-.well {
-
-display: block;
-
-  width: 100%;
-
-  position: relative;
-
-  top: 0px;
-
-  overflow: hidden;
-
-  z-index: 9;
-
-  margin-bottom: 30px;
-
-  -webkit-border-radius: 7px;
-
-  -moz-border-radius: 7px;
-
-  -ms-border-radius: 7px;
-
-  border-radius: 7px;
-
-  -webkit-transition: 0.1s;
-
-  -o-transition: 0.1s;
-
-  transition: 0.1s;
-
-
-       }
-
-      
-
-    .well:hover, .well:focus {
-
-              -webkit-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.1);
-
-  -moz-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.1);
-
-  -ms-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.1);
-
-  -o-box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.1);
-
-  box-shadow: 7px 14px 42px 3px rgba(0, 0, 0, 0.1);
-
-  text-decoration: none;
-
-  top: -10px;
-  
-       }
-	   
-
 
        </style>
   
   </head>
 <body>
-
-	<!-- Preloader Start -->
-    <div class="preloader">
-	  <p>Loading...</p>
-     </div>
-     <!-- Preloader End -->
  <header id="home">
 
 		<div class="header-top-area">
@@ -104,7 +34,7 @@ display: block;
                 <div class="row">
                     <div class="col-sm-3">
                         	<div class="logo">
-                           <a href="http://www.pci-sm.com/"><img src = "/pcilogo.png" alt = "pcilogo" height = "85%" width = "85%"></a>
+                           <a href="http://www.pci-sm.com/"><img src = "../public/pcilogo.png" alt = "pcilogo" height = "85%" width = "85%"></a>
                         </div>
                     </div>
 					
@@ -136,34 +66,51 @@ display: block;
 
 	     <section class="section-space-padding2">
 				<div class="section-title">
-                    <% if (info[0]) { %>
-					 <h1>Results Found</h1>
-					<% } else { %>
-					<h1>No Results Found </h1>
-					<% } %>
+                        <h1>Resume Added</h1>
                     </div>
-					
     </section>
 
 <br>
-<div class = "body-section">
-	<% info.forEach(function(result) { %>
-<div class="row">
-        <div class="col-sm-3">
-        <a href = "/info/<%= result.id %>">
-          <div class="well w3-animate-zoom">
-           
-           <p><img src="/pcilogo.png" class="img-circle" height="56" width="56" alt="Avatar"><%= result.user_name %></p>
-          </div>
-        </a>
-        </div>
-</div>
 
-	<% }); %>
-</div>
-     <footer>
-          <a href = "/searchpage2.html" class="icon btn btn-default"><i class="glyphicon glyphicon-search"></i>Search Again</a>
-    </footer>
+	  <!-- Services Start -->
+    <section id="services" class="services-section">
+        <div class="container">
+           <div class="row">
+                <div class="col-sm-10">
+                    <div class="section-title">
+                          <div class="divider dark">
+						   
+						 </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row margin-top-30">
+           
+			<div class="col-md-6 col-sm-6">
+				<div class="services-detail">
+					<a href = "../public/addresume.html"><i><img src = "" class = "input" alt = "input"></i>
+					<h3>Input Another Resume</h3></a>
+					<hr>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-6">
+				<div class="services-detail">
+					<i><img src = "edit.png" class = "edit" alt = "edit"></i>
+					<h3 href = "#">Edit A Resume</h3>
+					<hr>
+				</div>
+			</div>
+				
+            
+            </div>
+        </div>
+    </section>
+    <!-- Services End -->
+
+
+     
 	
 	
 	

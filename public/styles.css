@@ -52,6 +52,8 @@ body {
 	background-attachment: fixed;
 	background-repeat: repeat;
 	margin: 0;
+	position: relative;
+	z-index: 0px;
 }
 
 html,
@@ -144,6 +146,7 @@ fieldset {
     border: 2px solid #0e1629;
     margin: 10 auto;
     padding: 1;
+	display: inline;
 }
 
 
@@ -192,10 +195,11 @@ table{
     font-weight: 800;
 	font-family: '2-questa_grande_regular_31', serif;
 	float: center;
-	font-size: 60px;
+	font-size: 65px;
 	text-shadow: #5c5c5c .05em .05em .05em;
 	line-height: 100px;
 	padding-bottom: 0px;
+	
 
 }
 
@@ -433,6 +437,8 @@ background: linear-gradient(90deg, rgba(14,22,41,1) 54%, rgba(137,140,147,1) 93%
 	background-attachment: fixed;
 	background-repeat: repeat;
 	text-align: center;
+	position: relative;
+	z-index: 2;
 }
 
 
@@ -480,11 +486,7 @@ background: linear-gradient(90deg, rgba(14,22,41,1) 54%, rgba(137,140,147,1) 93%
 
 }
 
-.body-section {
-		background-image: url("../bgrd.png");
-		border-top: 3px solid black;
-		border-bottom: 3px solid black;
-}
+
 
 .logo {
     padding-top: 1px;
@@ -1963,7 +1965,21 @@ ul.portfolio li.active {
 }
 
 
+.body-section {
 
+       position: relative;
+
+       z-index: 2;
+
+       background: url(../images/bg/call-to-action.png);
+
+       background-attachment: fixed;
+
+       background-repeat: repeat;
+
+       text-align: center;
+
+}
 
 
 

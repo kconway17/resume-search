@@ -55,15 +55,10 @@ font-family: '2-questa_grande_regular_31', serif;
  	width:300;
  	height: 200px;
 	color: #0e1629;
-	margin-top: 2px solid #0e1629;
-	margin-bottom: 2px solid black;
+	font-size: 20px;
 	
  }
  
- #resume{
-	margin-top: 75px;
-	margin-bottom: 75px;
-	}
 	
 	#formId p{
 	color: #0e1629;
@@ -72,6 +67,9 @@ font-family: '2-questa_grande_regular_31', serif;
 	h2{
 	font-weight: bold
 
+	}
+	#form h2{
+	font-size: 45px;
 	}
 	
 .contact p{
@@ -88,6 +86,12 @@ font-family: '2-questa_grande_regular_31', serif;
    
   
 <body id='bodyTag'>
+
+	<!-- Preloader Start -->
+    <div class="preloader">
+	  <p>Loading...</p>
+     </div>
+     <!-- Preloader End -->
  <header id="home">
 
 		<div class="header-top-area">
@@ -128,14 +132,12 @@ font-family: '2-questa_grande_regular_31', serif;
     <section class="section-space-padding2">
 
 				<div class="section-title">
-                        <h1>Resume Return Page</h1>
-                         
+                        <h1>Resume Return Page</h1>  
                     </div>
-
     </section>
+	
+<section class = "body-section">
 <form id = "resume" method="POST" action="/resume">
-
-
 
 <!-- Creates table in the same format as one-page PCI resumes -->
 <table align = "center">
@@ -183,7 +185,7 @@ font-family: '2-questa_grande_regular_31', serif;
 	<th rowspan ="1">Technical Skills</th>
 	<td rowspan = "1", colspan = "2"><%= info.technical %></td>
 </tr>
-</div>
+
 
 
 <tr bgcolor = "#19324d">
@@ -285,23 +287,27 @@ font-family: '2-questa_grande_regular_31', serif;
 <a href="#" onclick = "window.history.back()" class="btn btn-default btn-lg">
          <i class = "icon-arrow-left-circle"></i> Back to Search Results</a>
 </div>
-</form>
-
-
 <br>
+</form>
+</section>
+
 
 <div id="form">
 
 <form id="formId"  onsubmit="return false">
 
+<fieldset>
 <h2>Email Resume</h2>
 <p>If you wish to send to more than one person, separate email addresses with a comma.</p>
 <input id="emails" type="text" placeholder="example@email.com" name="emails" />
 <button type="submit" onclick="sendEmail()" class = "btn btn-default">Send Email</button>
+
+</fieldset>
 <br></br>
 
 </form>
 </div>
+
 
     <!-- Footer Start -->
     <footer>
@@ -339,7 +345,7 @@ font-family: '2-questa_grande_regular_31', serif;
     <a href="#" class="scroll-to-top"><i class="icon-arrow-up-circle"></i></a>
     <!-- Back to Top End -->
     
-    
+ </div>   
 <script>
 
 var sendEmail = function() {
