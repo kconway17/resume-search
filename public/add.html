@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="../public/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- All CSS Plugins -->
-    <link rel="stylesheet" type="text/css" href="../public/plugin.css">
+    <link rel="stylesheet" type="text/css" href="plugin.css">
     
     <!-- Main CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="../public/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
     
     <!-- Google Web Fonts  -->
@@ -30,6 +30,12 @@
   </head>
   
 <body>
+	<!-- Preloader Start -->
+    <div class="preloader">
+	  <p>Loading...</p>
+     </div>
+     <!-- Preloader End -->
+
  <header id="home">
 
 		<div class="header-top-area">
@@ -37,7 +43,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         	<div class="logo">
-                           <a href="http://www.pci-sm.com/"><img src = "../public/pcilogo.png" alt = "pcilogo" height = "85%" width = "85%"></a>
+                           <a href="http://www.pci-sm.com/"><img src = "pcilogo.png" alt = "pcilogo" height = "85%" width = "85%"></a>
                         </div>
                     </div>
 					
@@ -53,9 +59,9 @@
                                 </div>
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a class="smoth-scroll" href="../public/searchpage2.html">Search Resumes<div class="ripple-wrapper"></div></a>
+                                        <li><a class="smoth-scroll" href="searchpage2.html">Search Resumes<div class="ripple-wrapper"></div></a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="../public/addresume.html">Input Resumes</a>
+                                        <li><a class="smoth-scroll" href="addresume.html">Input Resumes</a>
                                         </li>
                                        
                                     </ul>
@@ -91,16 +97,16 @@
             <div class="row margin-top-30">
            
             <div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i><img src = "../public/input.png" class = "input" alt = "input"></i>
+				<a class="services-detail" href = "addresume.html">
+					<i><img src = "input.png" class = "input" alt = "input"></i>
 					<h3>Input Another Resume</h3>
 					<hr>
-				</div>
+				</a>
 			</div>
 
 			<div class="col-md-4 col-sm-6">
 				<div class="services-detail">
-					<i class="icon-screen-tablet color-2"></i>
+					<i><img src = "edit.png" class = "edit" alt = "edit"></i>
 					<h3>Edit A Resume</h3>
 					<hr>
 				</div>
@@ -108,7 +114,7 @@
 
 			<div class="col-md-4 col-sm-6">
 				<div class="services-detail">
-					<i class="fa fa-code color-3"></i>
+					<i><img src = "delete.png" class = "delete" alt = "delete"></i>
 					<h3>Delete A Resume</h3>
 					<hr>
 				</div>

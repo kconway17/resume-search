@@ -95,11 +95,16 @@ img[src="searchimg.png"]{
 }
 
 img[src="input.png"]{
+	height: 60px;
+	width: 60px;
+}
+
+img[src="edit.png"]{
 	height: 70px;
 	width: 70px;
 }
 
-img[src="edit.png"]{
+img[src="delete.png"]{
 	height: 70px;
 	width: 70px;
 }
@@ -1107,6 +1112,9 @@ ul.portfolio li.active {
 	margin-right: auto;
 	display: block;
 
+}
+.services-section .services-detail h3{
+	color:black;
 }
 
 .services-section .services-detail:hover {
