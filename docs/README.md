@@ -18,6 +18,8 @@ How do I get set up?
     
     Run RethinkDB
     To start application: run node app.js
+    Rethink Console: port 8080
+    App: port 8000
 
 
 Who do I talk to?
