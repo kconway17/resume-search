@@ -41,11 +41,11 @@ app.post('/resume', function(req, res){
        console.log("POST /resume");
        console.log( req.body );
        var resumeData = {};
-		resumeData.user_name = req.body.user_name;
-		resumeData.work_role = req.body.work_role;
-		resumeData.clearance = req.body.clearance;
+	resumeData.user_name = req.body.user_name;
+	resumeData.work_role = req.body.work_role;
+	resumeData.clearance = req.body.clearance;
         resumeData.clearance_1_month = req.body.clearance_1_month;
-		resumeData.clearance_1_year = req.body.clearance_1_year;
+	resumeData.clearance_1_year = req.body.clearance_1_year;
         resumeData.company = req.body.Company;
         resumeData.degree = req.body.Degree;
         resumeData.advanced_degree = req.body['Advanced Degree'];
@@ -125,7 +125,7 @@ if(req.body.clearance != ""){
               searchCriteria["clearance"] = req.body.clearance;
 }
 if(req.body.tools_experience != ""){
-       searchCriteria["tools_experience"] = req.body.tools_experience;
+      		searchCriteria["tools_experience"] = req.body.tools_experience;
 }
 
 db.search(searchCriteria,
