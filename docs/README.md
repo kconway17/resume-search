@@ -1,5 +1,5 @@
 
-#Team Builder App
+Team Builder App
 
 What is this application for?
 
